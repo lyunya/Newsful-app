@@ -13,7 +13,7 @@ class Article extends Component {
   render() {
     return (
       <div className="Article">
-          <img alt={`article image`} src={this} />
+          {/* <img alt={`article image`} src={this} /> */}
       </div>
     );
   }
