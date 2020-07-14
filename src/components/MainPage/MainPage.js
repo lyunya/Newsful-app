@@ -52,17 +52,17 @@ const MainPage = () => {
         article.source.id === "cnn"
       );
     });
-    console.log(conservative, "this is conserv");
+    return { conservative, neutral, liberal };
   };
 
-  // const { articles } = state;
-
+  const news = seperateArticleBias(articles)
+  
   return (
     <div className="MainPage">
       <SearchBar search={search} />
-      <ArticleBar heading={"Liberal"} />
-      <ArticleBar heading={"Neutral"} />
-      <ArticleBar heading={"Conservative"} />
+      <ArticleBar heading={"Liberal"} data={news.liberal} />
+      <ArticleBar heading={"Neutral"} data={news.neutral} />
+      <ArticleBar heading={"Conservative"} data={news.liberal} />
     </div>
   );
 };
