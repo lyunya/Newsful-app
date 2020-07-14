@@ -1,51 +1,70 @@
-import React, { Component } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import ArticleBar from "../ArticleBar/ArticleBar"
+import ArticleBar from "../ArticleBar/ArticleBar";
+import { popular_news } from "../../newsful-helpers";
 
+const MainPage = () => {
+  const [articles, setArticles] = useState([]);
 
-class MainPage extends Component {
- 
-  seperateArticleBias = (articleData) => {
-      //const articleDataObj = Object.create({});
-    const conservative = articleData.filter(
-      item => { 
-            return (
-              item.source.id === "breitbart-news" ||
-              item.source.id === "fox-news" ||
-              item.source.id === "national-review"
-            );
-        }
+  useEffect(() => {
+    fetch(popular_news)
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      )
+      .then((responseJson) => {
+        setArticles(responseJson.articles);
+        seperateArticleBias(responseJson.articles);
+      });
+  }, []);
+
+  const search = (query) => {
+    fetch(
+      `https://newsapi.org/v2/everything?q=${query}&apiKey=fcea81b72a8041cb91c36892e482ab0d`
     )
-    const neutral = articleData.filter((item) => {
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      )
+      .then((responseJson) => {
+        setArticles(responseJson.articles);
+        seperateArticleBias(responseJson.articles);
+      });
+  };
+
+  const seperateArticleBias = (articles) => {
+    const conservative = articles.filter((article) => {
       return (
-        item.source.id === "abc-news" ||
-        item.source.id === "associated-press" ||
-        item.source.id === "usa-today"
+        article.source.id === "breitbart-news" ||
+        article.source.id === "fox-news" ||
+        article.source.id === "national-review"
       );
     });
-     const liberal = articleData.filter((item) => {
-       return (
-         item.source.id === "msnbc" ||
-         item.source.id === "the-huffington-post" ||
-         item.source.id === "cnn"
-       );
-     });
-     console.log(liberal, "this is liberal")
-}
+    const neutral = articles.filter((article) => {
+      return (
+        article.source.id === "abc-news" ||
+        article.source.id === "associated-press" ||
+        article.source.id === "usa-today"
+      );
+    });
+    const liberal = articles.filter((article) => {
+      return (
+        article.source.id === "msnbc" ||
+        article.source.id === "the-huffington-post" ||
+        article.source.id === "cnn"
+      );
+    });
+    console.log(conservative, "this is conserv");
+  };
 
+  // const { articles } = state;
 
-  render() {
-      this.seperateArticleBias(this.props.articleData)
-    //   console.log(this.props.articleData, "this is props article data")
-    return (
-      <div className="MainPage">
-        <SearchBar />
-        <ArticleBar heading={"Liberal"} data={this.conservative}/>
-        <ArticleBar heading={"Neutral"} />
-        <ArticleBar heading={"Conservative"} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="MainPage">
+      <SearchBar search={search} />
+      <ArticleBar heading={"Liberal"} />
+      <ArticleBar heading={"Neutral"} />
+      <ArticleBar heading={"Conservative"} />
+    </div>
+  );
+};
 
 export default MainPage;

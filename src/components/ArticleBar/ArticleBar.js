@@ -10,6 +10,7 @@ class ArticleBar extends Component {
   }
 
   render() {
+    
     return (
       <div className="ArticleBar">
         <h2>{this.props.heading}</h2>
