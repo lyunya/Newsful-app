@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ArticleBar from "../ArticleBar/ArticleBar";
-import { popular_news } from "../../newsful-helpers";
+import { popular_news, search_news } from "../../newsful-helpers";
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
@@ -19,12 +19,13 @@ const MainPage = () => {
 
   const search = (query) => {
     fetch(
-      `https://newsapi.org/v2/everything?sources=msnbc,the-huffington-post,cnn,abc-news,associated-press,usa-today,breitbart-news,fox-news,national-review&apiKey=fcea81b72a8041cb91c36892e482ab0d&language=en&q=${query}&sortBy=publishedAt`
+      `${search_news}${query}`
     )
       .then((res) =>
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
       .then((responseJson) => {
+        console.log(responseJson.articles)
         setArticles(responseJson.articles);
         seperateArticleBias(responseJson.articles);
       });

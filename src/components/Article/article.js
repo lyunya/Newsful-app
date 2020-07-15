@@ -1,10 +1,12 @@
 import React from "react";
+import "./Article.css"
 
 
 const Article = ({article}) => {
 
     return (
-      <div className="Article">
+      <div className="article">
+        <img className="articleImage" alt={'article'} src={article.urlToImage} />
           <p>{article.title}</p>
       </div>
     );
