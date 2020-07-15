@@ -1,22 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
 
-class Article extends Component {
-    constructor(props){
-        super(props)
-        // this.state = {
-        //     articleData: props.articleData,
-        // }
-    }
-  
+const Article = ({article}) => {
 
-  render() {
     return (
       <div className="Article">
-          {/* <img alt={`article image`} src={this} /> */}
+          <p>{article.title}</p>
       </div>
     );
-  }
 }
 
 export default Article;

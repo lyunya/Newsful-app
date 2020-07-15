@@ -1,23 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import Article from "../Article/Article"
 
-class ArticleBar extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //     articleData: props.articleData,
-    // }
-  }
+const ArticleBar = ({ data, heading }) => {
 
-  render() {
+  const newsArticle = data.map((article, index) => <Article article={article} key={index} />)
     
     return (
       <div className="ArticleBar">
-        <h2>{this.props.heading}</h2>
-        <Article />
+        <h2>{heading}</h2>
+        {data.map((article, index) =>
+        {
+          return <Article article={article} key={index} />
+        })}
       </div>
     );
-  }
 }
 
 export default ArticleBar;
