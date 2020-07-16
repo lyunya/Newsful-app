@@ -1,0 +1,12 @@
+.Bias_content {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.Bias_Heading{
+    clear: both;
+}
+
