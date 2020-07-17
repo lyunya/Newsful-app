@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ArticleBar from "../ArticleBar/ArticleBar";
+import Nav from "../Navigation/Header"
 import { popular_news, search_news } from "../../newsful-helpers";
+import "./MainPage.css";
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
@@ -60,6 +62,8 @@ const MainPage = () => {
   
   return (
     <div className="MainPage">
+      <Nav />
+      <h1 className="App-title">Newsful</h1>
       <SearchBar search={search} />
       <ArticleBar heading={"Liberal"} data={news.liberal} />
       <ArticleBar heading={"Neutral"} data={news.neutral} />

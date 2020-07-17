@@ -3,74 +3,56 @@
 *::after {
   box-sizing: border-box;
 }
-
-.article_image {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
-
 .articles {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
+  
+}
+.article_image {
+  max-width: 100%;
+  vertical-align: middle;
 }
 
 .article__item {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  padding: 1rem;
+  padding: .5rem;
+  width: 250px;
+  /* scroll snapping */
+  scroll-snap-align: start;
+
+  /* maybe this will work in the future 🤷‍♂️ */
+  scroll-snap-stop: always;
 }
 
 .article {
   background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
   text-decoration: none;
   color: black;
+  overflow: hidden;
 }
 
 .article__content {
-  /* display: flex;
-  flex: 1 1 auto;
-  flex-direction: column; */
   padding: 1rem;
 }
 
-.article__image {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-
 .article_headline {
-  font-size: 1rem;
+  font-size: 12px;
   font-weight: bold;
-  letter-spacing: 2px;
-  text-decoration-style: none;
 }
 
-.article__text {
-  flex: 1 1 auto;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-@media only screen and (min-width: 600px) {
+@media (min-width: 768px) {
   .article__item {
-    width: 50%;
+    width: 250px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 1028px) {
   .article__item {
-    width: 33.33%;
+    width: 300px;
   }
 }
