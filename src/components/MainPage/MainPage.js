@@ -2,57 +2,60 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ArticleBar from "../ArticleBar/ArticleBar";
 import Nav from "../Navigation/Header"
-import { popular_news, search_news } from "../../newsful-helpers";
+import { new_popular_news, conserv_search_news, neutral_search_news, liberal_search_news } from "../../newsful-helpers";
 import "./MainPage.css";
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch(popular_news)
+    fetch(new_popular_news)
       .then((res) =>
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
       .then((responseJson) => {
-        setArticles(responseJson.articles);
-        seperateArticleBias(responseJson.articles);
+        console.log(responseJson.news)
+        setArticles(responseJson.news);
+        seperateArticleBias(responseJson.news);
       });
   }, []);
 
   const search = (query) => {
-    fetch(
-      `${search_news}${query}`
-    )
+    Promise.all([
+      fetch(`${conserv_search_news}${query}`),
+      fetch(`${neutral_search_news}${query}`),
+      fetch(`${liberal_search_news}${query}`)
+    ])
       .then((res) =>
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       )
       .then((responseJson) => {
-        console.log(responseJson.articles)
-        setArticles(responseJson.articles);
-        seperateArticleBias(responseJson.articles);
+        console.log(responseJson.news)
+        setArticles(responseJson.news);
+        seperateArticleBias(responseJson.news);
       });
   };
 
   const seperateArticleBias = (articles) => {
     const conservative = articles.filter((article) => {
       return (
-        article.source.id === "breitbart-news" ||
-        article.source.id === "fox-news" ||
-        article.source.id === "national-review"
+        article.author === "@BreitbartNews" ||
+        article.author === "Fox News" ||
+        article.author.includes("nationalreview.com")
       );
     });
     const neutral = articles.filter((article) => {
       return (
-        article.source.id === "abc-news" ||
-        article.source.id === "associated-press" ||
-        article.source.id === "usa-today"
+        article.author === "go" ||
+        article.author === "Associated Press" ||
+        article.author === "@usatoday"
       );
     });
     const liberal = articles.filter((article) => {
       return (
-        article.source.id === "msnbc" ||
-        article.source.id === "the-huffington-post" ||
-        article.source.id === "cnn"
+        article.author === "MSNBC" ||
+        article.author === "huffpost" ||
+        article.author === "cnn"
       );
     });
     return { conservative, neutral, liberal };

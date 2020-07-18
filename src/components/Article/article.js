@@ -15,11 +15,11 @@ const Article = ({ article }) => {
           <img
             className="article_image"
             alt={"article"}
-            src={article.urlToImage}
+            src={article.image}
             onError={(e) => (e.target.style.display = "none")}
           />
           <div className="article__content">
-            <div class="article_headline">{article.title}</div>
+            <div className="article_headline">{article.title}</div>
             {/* <p class="article__text">{article.description}</p> */}
           </div>
         </a>
