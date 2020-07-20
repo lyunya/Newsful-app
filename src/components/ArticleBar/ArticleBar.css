@@ -1,4 +1,4 @@
-.Bias_content {
+.bias-content {
   display: flex;
   overflow-x: scroll;
   /* padding: 20px; */
@@ -14,7 +14,7 @@
   -webkit-overflow-scrolling: touch;
 
   /* disbable vertical scroll for touch */
-  touch-action: pan-x;
+  /* touch-action: pan-x; */
 
   /* scroll snapping */
   scroll-snap-type: x mandatory;
@@ -24,11 +24,15 @@
   scroll-padding-inline-start: 0px;
 }
 
-.Bias_content::-webkit-scrollbar {
+.bias-content::-webkit-scrollbar {
   display: none;
 }
 
-.Bias_heading {
+.bias-heading {
   clear: both;
   margin-bottom: 0px;
+}
+
+.hidden {
+	display: none;
 }

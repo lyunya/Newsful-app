@@ -1,30 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Article.css";
+import NewsfulContext from "../../newsfulcontext";
 
 const Article = ({ article }) => {
+// const [savedArticle, setSavedArticle] = useContext(NewsfulContext)
 
   return (
-    <ul className="articles">
-      <li className="article__item">
-        <a
-          className="article"
-          href={article.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="article_image"
-            alt={"article"}
-            src={article.image}
-            onError={(e) => (e.target.style.display = "none")}
-          />
-          <div className="article__content">
-            <div className="article_headline">{article.title}</div>
-            {/* <p class="article__text">{article.description}</p> */}
+    <div className="articles">
+      <div className="article-item">
+        <div className="article">
+          <a href={article.url} target="_blank" rel="noopener noreferrer">
+            <img
+              className="article-image"
+              alt={"article"}
+              src={article.image}
+              onError={(e) => (e.target.style.display = "none")}
+            />
+          </a>
+          <div className="article-content">
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              <div className="article_headline">{article.title}</div>
+            </a>
+            <FontAwesomeIcon icon={"bookmark"} className="bookmark" /*onClick={() => setSavedArticle(article)} */ />
           </div>
-        </a>
-      </li>
-    </ul>
+        </div>
+      </div>
+    </div>
   );
 };
 
