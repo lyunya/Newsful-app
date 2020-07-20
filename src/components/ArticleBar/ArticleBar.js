@@ -4,21 +4,32 @@ import Article from "../Article/Article";
 import "./ArticleBar.css";
 
 const ArticleBar = ({ data, heading }) => {
-const scrollWrapperRef = useRef();
-const { isDragging } = scroller(scrollWrapperRef);
-const ref = useRef();
+  const scrollWrapperRef = useRef();
+  const { isDragging } = scroller(scrollWrapperRef);
+  const ref = useRef();
 
-const scroll = (scrollOffset) => {
-  ref.current.scrollLeft += scrollOffset;
-};
+
+  const scroll = (scrollOffset) => {
+    scrollWrapperRef.current.scrollLeft += scrollOffset;
+    if(scrollWrapperRef.current.scrollLeft > 0){
+      //remove hidden class from left paddle
+    }
+    if(scrollWrapperRef.current.scrollLeft === scrollWrapperRef.current.scrollLeftMax){
+      //add hidden class to right paddle
+    }
+  };
 
   return (
-    <div className="ArticleBar">
-      <h2 className="Bias_heading">{heading}</h2>
-      {/* <button onClick={() => scroll(-20)}>left</button>
-      <button onClick={() => scrollWrapperRef}>right</button> */}
+    <div className="article-bar">
+      <h2 className="bias-heading">{heading}</h2>
+      <button  className="left-paddle " onClick={() => scroll(-200)}>
+        {"<"}
+      </button>
+      <button className="right-paddle " onClick={() => scroll(200)}>
+        {">"}
+      </button>
       <div
-        className="Bias_content"
+        className="bias-content"
         ref={scrollWrapperRef}
         // style={{ pointerEvents: isDragging ? "none" : undefined }}
       >

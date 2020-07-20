@@ -9,21 +9,19 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  
 }
-.article_image {
+.article-image {
   max-width: 100%;
   vertical-align: middle;
 }
 
-.article__item {
+.article-item {
   display: flex;
-  padding: .5rem;
+  padding: 0.5rem;
   width: 250px;
   /* scroll snapping */
   scroll-snap-align: start;
 
-  /* maybe this will work in the future 🤷‍♂️ */
   scroll-snap-stop: always;
 }
 
@@ -36,7 +34,7 @@
   overflow: hidden;
 }
 
-.article__content {
+.article-content {
   padding: 1rem;
 }
 
@@ -45,14 +43,14 @@
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .article__item {
-    width: 250px;
-  }
+.bookmark {
+  position: relative;
+  bottom: 0;
+  right: 0;
 }
 
-@media (min-width: 1028px) {
-  .article__item {
-    width: 300px;
+@media (min-width: 768px) {
+  .article-item {
+    width: 250px;
   }
 }

@@ -1,13 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
-
 import MainPage from "../MainPage/MainPage";
+import NewsfulContext from "../../newsfulcontext";
+import SavedArticles from "../SavedArticles/SavedArticles";
+library.add(faBookmark);
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+const App = () => {
+const {savedArticles, setSavedArticle} = useContext(NewsfulContext);
+
+  
+
+  return (
+    <div className="App">
+      <NewsfulContext.Provider value={{ savedArticles, setSavedArticle }}>
         <Switch>
           <Route
             exact
@@ -16,10 +24,11 @@ class App extends Component {
               return <MainPage />;
             }}
           />
+          <Route path='/saved-articles' component={SavedArticles} />
         </Switch>
-      </div>
-    );
-  }
-}
+      </NewsfulContext.Provider>
+    </div>
+  );
+};
 
 export default App;
