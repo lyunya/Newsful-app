@@ -10,7 +10,7 @@ const SavedArticles = () => {
   const {savedArticles, setSavedArticles} = useContext(NewsfulContext);
 
   return (
-    <div className="main-page">
+    <div className="saved-articles">
       <Nav />
       {savedArticles.map((article, index) => {
         return <Article article={article} key={index} />;
