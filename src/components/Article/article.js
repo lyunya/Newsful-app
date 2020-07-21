@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Article.css";
-import NewsfulContext from "../../newsfulcontext";
+import { NewsfulContext } from "../../components/App";
 
 const Article = ({ article }) => {
-// const [savedArticle, setSavedArticle] = useContext(NewsfulContext)
+  const contextValue = useContext(NewsfulContext);
+
+  const setSavedArticle = (article) => {
+    contextValue.saveArticle(article);
+  };
 
   return (
     <div className="articles">
@@ -22,7 +26,11 @@ const Article = ({ article }) => {
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className="article_headline">{article.title}</div>
             </a>
-            <FontAwesomeIcon icon={"bookmark"} className="bookmark" /*onClick={() => setSavedArticle(article)} */ />
+            <FontAwesomeIcon
+              icon={"bookmark"}
+              className="bookmark"
+              onClick={() => setSavedArticle(article)}
+            />
           </div>
         </div>
       </div>

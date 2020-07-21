@@ -20,22 +20,36 @@ const MainPage = () => {
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-    var apiRequest1 = fetch(conserv_popular_news).then((response) => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    let apiRequest1 = fetch(conserv_popular_news, {
+      signal: signal,
+    }).then((response) => {
       return response.json();
     });
-    var apiRequest2 = fetch(neutral_popular_news).then((response) => {
+    let apiRequest2 = fetch(neutral_popular_news, {
+      signal: signal,
+    }).then((response) => {
       return response.json();
     });
-    var apiRequest3 = fetch(liberal_popular_news).then((response) => {
+    let apiRequest3 = fetch(liberal_popular_news, {
+      signal: signal,
+    }).then((response) => {
       return response.json();
     });
-    var combinedData = { apiRequest1: {}, apiRequest2: {}, apiRequest3: {} };
+
+    let combinedData = {
+      apiRequest1: {},
+      apiRequest2: {},
+      apiRequest3: {},
+    };
+
     Promise.all([apiRequest1, apiRequest2, apiRequest3])
       .then((values) => {
         combinedData["apiRequest1"] = values[0];
         combinedData["apiRequest2"] = values[1];
         combinedData["apiRequest3"] = values[2];
-        console.log(combinedData["apiRequest2"]);
         return combinedData;
       })
       .then((responseJson) => {
@@ -53,33 +67,43 @@ const MainPage = () => {
         setIsError(true);
         console.error("error:", error);
       });
+    return function cleanup() {
+      abortController.abort();
+    };
   }, []);
 
   const search = (query) => {
     setIsLoading(true);
     setIsError(false);
-    var apiRequest1 = fetch(`${conserv_search_news}${query}`).then(function (
+    let apiRequest1 = fetch(`${conserv_search_news}${query}`).then(function (
       response
     ) {
       return response.json();
     });
-    var apiRequest2 = fetch(`${neutral_search_news}${query}`).then(function (
+    let apiRequest2 = fetch(`${neutral_search_news}${query}`).then(function (
       response
     ) {
       return response.json();
     });
-    var apiRequest3 = fetch(`${liberal_search_news}${query}`).then(function (
+    let apiRequest3 = fetch(`${liberal_search_news}${query}`).then(function (
       response
     ) {
       return response.json();
     });
-    var combinedData = { apiRequest1: {}, apiRequest2: {}, apiRequest3: {} };
+
+    // const apiRequest1 = { ...conservativeData, bias: "conservative" };
+    // const apiRequest2 = { ...neutralData, bias: "neutral" };
+    // const apiRequest3 = { ...liberalData, bias: "liberal" };
+    let combinedData = {
+      apiRequest1: {},
+      apiRequest2: {},
+      apiRequest3: {},
+    };
     Promise.all([apiRequest1, apiRequest2, apiRequest3])
       .then(function (values) {
         combinedData["apiRequest1"] = values[0];
         combinedData["apiRequest2"] = values[1];
         combinedData["apiRequest3"] = values[2];
-        console.log(combinedData[1])
         return combinedData;
       })
       .then((responseJson) => {
@@ -102,26 +126,26 @@ const MainPage = () => {
   const seperateArticleBias = (articles) => {
     const conservative = articles.filter((article) => {
       return (
-        article.author === "@BreitbartNews" ||
-        article.author === "Fox News" ||
-        article.author.includes("nationalreview.com")
+        article.url.includes("breitbart") ||
+        article.url.includes("foxnews") ||
+        article.url.includes("nationalreview.com")
       );
     });
     const neutral = articles.filter((article) => {
       return (
-        article.author === "@BBCWorld" ||
-        article.author === "Associated Press" ||
-        article.author === "AP" ||
-        article.author === "@usatoday"
+        article.url.includes("bbc") ||
+        article.url.includes("apnews") ||
+        article.url.includes("usatoday")
       );
     });
     const liberal = articles.filter((article) => {
       return (
-        article.author === "MSNBC" ||
-        article.author === "huffpost" ||
-        article.author === "cnn"
+        article.url.includes("msnbc") ||
+        article.url.includes("huffpost") ||
+        article.url.includes("cnn")
       );
     });
+
     return { conservative, neutral, liberal };
   };
 
@@ -138,8 +162,8 @@ const MainPage = () => {
       ) : (
         <Fragment>
           <ArticleBar heading={"Liberal"} data={news.liberal} />
-          <ArticleBar heading={"Neutral"} data={news.neutral} />
           <ArticleBar heading={"Conservative"} data={news.conservative} />
+          <ArticleBar heading={"Neutral"} data={news.neutral} />
         </Fragment>
       )}
     </div>
