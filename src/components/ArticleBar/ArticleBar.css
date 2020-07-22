@@ -33,6 +33,23 @@
   margin-bottom: 0px;
 }
 
+.articlebar-header{
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+.arrows{
+  position: absolute;
+  bottom: 0;
+  right: 2%;
+}
+
+.left-paddle{
+  float: left;
+}
+.right-paddle{
+  float: right;
+}
 .hidden {
 	display: none;
 }

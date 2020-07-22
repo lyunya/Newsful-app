@@ -1,20 +1,26 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import Article from "../Article/Article";
-import NewsfulContext from "../../newsfulcontext";
+import { NewsfulContext } from "../../components/App";
 import Nav from "../Navigation/Header";
-
+import "./SavedArticles.css";
 
 const SavedArticles = () => {
-
-
-  const {savedArticles, setSavedArticles} = useContext(NewsfulContext);
+  const { savedArticles } = useContext(NewsfulContext);
+  const contextValue = useContext(NewsfulContext);
 
   return (
-    <div className="main-page">
+    <div className="saved-articles">
       <Nav />
-      {savedArticles.map((article, index) => {
-        return <Article article={article} key={index} />;
-      })}
+      <h1>Saved Articles</h1>
+      <p>
+        You have saved {contextValue.liberalCount} liberal, {contextValue.neutralCount} neutral, and{" "}
+        {contextValue.conservativeCount} conservative articles
+      </p>
+      <main className="main">
+        {savedArticles.map((article, index) => {
+          return <Article article={article} key={index} />;
+        })}
+      </main>
     </div>
   );
 };
