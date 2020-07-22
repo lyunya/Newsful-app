@@ -6,8 +6,20 @@ import { NewsfulContext } from "../../components/App";
 const Article = ({ article }) => {
   const contextValue = useContext(NewsfulContext);
 
+
   const setSavedArticle = (article) => {
     contextValue.saveArticle(article);
+      if (article.url.includes("msnbc.com" || "huffpost.com" || "cnn.com")) {
+        contextValue.liberalCount = contextValue.liberalCount + 1;
+      }
+      if (article.url.includes("reuters.com" || "npr.com" || "bbc.com")) {
+        contextValue.neutralCount = contextValue.neutralCount + 1;
+      }
+      if (
+        article.url.includes("foxnews.com" || "nationalreview.com" || "breitbart.com")
+      ) {
+        contextValue.conservativeCount = contextValue.conservativeCount + 1;
+      }
   };
 
   return (

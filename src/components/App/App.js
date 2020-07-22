@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark} from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import MainPage from "../MainPage/MainPage";
 
@@ -18,6 +18,9 @@ class App extends React.Component {
       savedArticles: [],
       saveArticle: this.saveArticle,
       userId: 0,
+      liberalCount: 0,
+      neutralCount: 0,
+      conservativeCount: 0,
     };
   }
 

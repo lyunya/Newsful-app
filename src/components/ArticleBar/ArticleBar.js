@@ -1,14 +1,20 @@
 import React, { useRef } from "react";
 import scroller from "../../scroller.js";
 import Article from "../Article/Article";
+import useDeviceDetect from "../../useDeviceDetect";
 import "./ArticleBar.css";
 
 const ArticleBar = ({ data, heading }) => {
   const scrollWrapperRef = useRef();
-  const { isDragging } = scroller(scrollWrapperRef);
-  const ref = useRef();
+  const { isMobile } = useDeviceDetect();
 
+  //do I need to use this if it gets used on load
+  const scrollMobile = () => {
+    return isMobile ? scroller(scrollWrapperRef) : null;
+  }
+  
 
+//need to implement functionaly to hide arrows
   const scroll = (scrollOffset) => {
     scrollWrapperRef.current.scrollLeft += scrollOffset;
     if(scrollWrapperRef.current.scrollLeft > 0){
@@ -69,7 +75,6 @@ const ArticleBar = ({ data, heading }) => {
       <div
         className="bias-content"
         ref={scrollWrapperRef}
-        // style={{ pointerEvents: isDragging ? "none" : undefined }}
       >
         {data.map((article, index) => {
           return <Article article={article} key={index} />;

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ArticleBar from "../ArticleBar/ArticleBar";
+
 import Nav from "../Navigation/Header";
 import {
   conserv_popular_news,
@@ -90,10 +91,6 @@ const MainPage = () => {
     ) {
       return response.json();
     });
-
-    // const apiRequest1 = { ...conservativeData, bias: "conservative" };
-    // const apiRequest2 = { ...neutralData, bias: "neutral" };
-    // const apiRequest3 = { ...liberalData, bias: "liberal" };
     let combinedData = {
       apiRequest1: {},
       apiRequest2: {},
@@ -126,23 +123,23 @@ const MainPage = () => {
   const seperateArticleBias = (articles) => {
     const conservative = articles.filter((article) => {
       return (
-        article.url.includes("breitbart") ||
-        article.url.includes("foxnews") ||
+        article.url.includes("breitbart.com") ||
+        article.url.includes("foxnews.com") ||
         article.url.includes("nationalreview.com")
       );
     });
     const neutral = articles.filter((article) => {
       return (
-        article.url.includes("bbc") ||
-        article.url.includes("apnews") ||
-        article.url.includes("usatoday")
+        article.url.includes("reuters.com") ||
+        article.url.includes("npr.com") ||
+        article.url.includes("bbc.com")
       );
     });
     const liberal = articles.filter((article) => {
       return (
-        article.url.includes("msnbc") ||
-        article.url.includes("huffpost") ||
-        article.url.includes("cnn")
+        article.url.includes("msnbc.com") ||
+        article.url.includes("huffpost.com") ||
+        article.url.includes("cnn.com")
       );
     });
 
@@ -161,9 +158,17 @@ const MainPage = () => {
         <div className="spinner"></div>
       ) : (
         <Fragment>
-          <ArticleBar heading={"Liberal"} data={news.liberal} />
-          <ArticleBar heading={"Conservative"} data={news.conservative} />
-          <ArticleBar heading={"Neutral"} data={news.neutral} />
+          <ArticleBar
+            className="liberal-bar"
+            heading={"Liberal"}
+            data={news.liberal}
+          />
+          <ArticleBar
+            className="conservative-bar"
+            heading={"Conservative"}
+            data={news.conservative}
+          />
+          <ArticleBar className="neutral-bar" heading={"Neutral"} data={news.neutral} />
         </Fragment>
       )}
     </div>
