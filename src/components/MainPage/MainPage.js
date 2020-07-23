@@ -18,60 +18,60 @@ const MainPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    setIsError(false);
-    const abortController = new AbortController();
-    const signal = abortController.signal;
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setIsError(false);
+  //   const abortController = new AbortController();
+  //   const signal = abortController.signal;
 
-    let apiRequest1 = fetch(conserv_popular_news, {
-      signal: signal,
-    }).then((response) => {
-      return response.json();
-    });
-    let apiRequest2 = fetch(neutral_popular_news, {
-      signal: signal,
-    }).then((response) => {
-      return response.json();
-    });
-    let apiRequest3 = fetch(liberal_popular_news, {
-      signal: signal,
-    }).then((response) => {
-      return response.json();
-    });
+  //   let apiRequest1 = fetch(conserv_popular_news, {
+  //     signal: signal,
+  //   }).then((response) => {
+  //     return response.json();
+  //   });
+  //   let apiRequest2 = fetch(neutral_popular_news, {
+  //     signal: signal,
+  //   }).then((response) => {
+  //     return response.json();
+  //   });
+  //   let apiRequest3 = fetch(liberal_popular_news, {
+  //     signal: signal,
+  //   }).then((response) => {
+  //     return response.json();
+  //   });
 
-    let combinedData = {
-      apiRequest1: {},
-      apiRequest2: {},
-      apiRequest3: {},
-    };
+  //   let combinedData = {
+  //     apiRequest1: {},
+  //     apiRequest2: {},
+  //     apiRequest3: {},
+  //   };
 
-    Promise.all([apiRequest1, apiRequest2, apiRequest3])
-      .then((values) => {
-        combinedData["apiRequest1"] = values[0];
-        combinedData["apiRequest2"] = values[1];
-        combinedData["apiRequest3"] = values[2];
-        return combinedData;
-      })
-      .then((responseJson) => {
-        const results = [
-          responseJson.apiRequest1.news,
-          responseJson.apiRequest2.news,
-          responseJson.apiRequest3.news,
-        ];
-        const finalResults = results.flat();
-        setIsLoading(false);
-        setArticles(finalResults);
-        seperateArticleBias(finalResults);
-      })
-      .catch((error) => {
-        setIsError(true);
-        console.error("error:", error);
-      });
-    return function cleanup() {
-      abortController.abort();
-    };
-  }, []);
+  //   Promise.all([apiRequest1, apiRequest2, apiRequest3])
+  //     .then((values) => {
+  //       combinedData["apiRequest1"] = values[0];
+  //       combinedData["apiRequest2"] = values[1];
+  //       combinedData["apiRequest3"] = values[2];
+  //       return combinedData;
+  //     })
+  //     .then((responseJson) => {
+  //       const results = [
+  //         responseJson.apiRequest1.news,
+  //         responseJson.apiRequest2.news,
+  //         responseJson.apiRequest3.news,
+  //       ];
+  //       const finalResults = results.flat();
+  //       setIsLoading(false);
+  //       setArticles(finalResults);
+  //       seperateArticleBias(finalResults);
+  //     })
+  //     .catch((error) => {
+  //       setIsError(true);
+  //       console.error("error:", error);
+  //     });
+  //   return function cleanup() {
+  //     abortController.abort();
+  //   };
+  // }, []);
 
   const search = (query) => {
     setIsLoading(true);

@@ -14,8 +14,8 @@ const Article = ({ article }) => {
 
   const deleteSavedArticle = (article) => {
     // checkSaved(article)
-    contextValue.deleteSave(article);
     contextValue.countDownSavedArticles(article);
+    contextValue.deleteSave(article);
   }
 
   const checkSaved = (article) => {
