@@ -7,18 +7,24 @@ const Article = ({ article }) => {
   const contextValue = useContext(NewsfulContext);
 
   const setSavedArticle = (article) => {
-    checkSaved(article);
-    contextValue.saveArticle(article);
-    contextValue.countSavedArticles(article);
+    checkSaved(article)
+    contextValue.countUpSavedArticles(article);
+    contextValue.saveArticle(article);  
   };
+
+  const deleteSavedArticle = (article) => {
+    // checkSaved(article)
+    contextValue.deleteSave(article);
+    contextValue.countDownSavedArticles(article);
+  }
 
   const checkSaved = (article) => {
     console.log(article)
-    contextValue.savedArticles.find((a) => a.id === article.id);
+    return contextValue.savedArticles.find((a) => a.id === article.id);
   };
 
-  const style = checkSaved(article) ? "fas" : "far";
-
+  // const style = checkSaved(article) ? "fas" : "far";
+  
   return (
     <div className="articles">
       <div className="article-item">
@@ -35,11 +41,19 @@ const Article = ({ article }) => {
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className="article_headline">{article.title}</div>
             </a>
-            <FontAwesomeIcon
-              icon={[style, "bookmark"]}
-              className="bookmark"
-              onClick={() => setSavedArticle(article)}
-            />
+            {checkSaved(article) ? (
+              <FontAwesomeIcon
+                icon={["fas", "bookmark"]}
+                className="bookmark"
+                onClick={() => deleteSavedArticle(article)}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={["far", "bookmark"]}
+                className="bookmark"
+                onClick={() => setSavedArticle(article)}
+              />
+            )}
           </div>
         </div>
       </div>

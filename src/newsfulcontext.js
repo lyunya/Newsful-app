@@ -4,6 +4,8 @@ const NewsfulContext = React.createContext({
   savedArticles: [],
   saveArticle: () => {},
   countSavedArticles: () => {},
+  countDownSavedArticles: () => {},
+  deleteSave: () => {},
   username: "",
   userId: 0,
   liberalCount: 0,
