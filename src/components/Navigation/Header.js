@@ -1,14 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TokenService from "../../services/token-service";
 import "./Header.css";
 
 const Header = () => {
+
+    const handleLogoutClick = () => {
+    TokenService.clearAuthToken();
+  };
+
+  const renderLogoutLink = () => {
+    return (
+        <Link onClick={handleLogoutClick} to="/" className="Header-link">
+          Log out
+        </Link>
+
+    );
+  }
+
+  const renderLoginLink = () => {
+    return (
+        <Link to="/" className="Header-link">
+          Log in
+        </Link>
+    );
+  }
+
+
   return (
     <div className="header">
       <div className="container">
         <ul className="main-nav">
           <li>
-            <Link to="/" className="nav-link">
+            <Link to="/home" className="nav-link">
               Home
             </Link>
           </li>
@@ -18,9 +42,9 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/login" className="nav-link">
-              Log Out
-            </Link>
+            {TokenService.hasAuthToken()
+              ? renderLogoutLink()
+              : renderLoginLink()}
           </li>
         </ul>
       </div>
