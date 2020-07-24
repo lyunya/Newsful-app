@@ -1,0 +1,56 @@
+.loginWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f1faee;
+}
+
+.Intro {
+  width: 200px;
+}
+.Intro h1 {
+  text-align: center;
+  font-size: 2.1em;
+}
+.Intro h2 {
+  font-size: 1.2em;
+}
+
+.Intro h3 {
+  font-size: 0.8em;
+}
+.loginImg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+.signin-btn {
+  margin-top: 5%;
+}
+
+button {
+  display: inline-block;
+  padding: 0.25em 1em;
+  border: 0.1em solid #000000;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+@media screen and (min-width: 768px) {
+  .Intro {
+    width: 650px;
+  }
+}

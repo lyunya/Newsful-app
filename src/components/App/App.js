@@ -5,7 +5,11 @@ import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
 import "./App.css";
 import MainPage from "../MainPage/MainPage";
+import LoginForm from "../LoginForm/LoginForm";
 import SavedArticles from "../SavedArticles/SavedArticles";
+import TokenService from "../../services/token-service";
+import Config from "../../config";
+const API = Config.API_ENDPOINT;
 
 library.add(fasBookmark, farBookmark);
 
@@ -20,12 +24,64 @@ class App extends React.Component {
       deleteSave: this.deleteSave,
       countUpSavedArticles: this.countUpSavedArticles,
       countDownSavedArticles: this.countDownSavedArticles,
-      userId: 0,
+      userId: this.userId,
       liberalCount: 0,
       neutralCount: 0,
       conservativeCount: 0,
+      error: null
     };
   }
+
+  componentDidMount() {
+    const token = TokenService.hasAuthToken();
+    if (token) {
+      this.fetchData(localStorage.getItem("userId"));
+    }
+  }
+
+countSavedArticles(){
+  this.state.savedArticles.map((article) => {
+    if (
+      /msnbc/.test(article.url) ||
+      /huffpost/.test(article.url) ||
+      /cnn/.test(article.url)
+    ) {
+      this.setState({ liberalCount: this.state.liberalCount + 1 });
+    }
+    if (
+      /reuters/.test(article.url) ||
+      /npr/.test(article.url) ||
+      /bbc/.test(article.url)
+    ) {
+      this.setState({ neutralCount: this.state.neutralCount + 1 });
+    }
+    if (
+      /foxnews/.test(article.url) ||
+      /breitbart/.test(article.url) ||
+      /nationalreview/.test(article.url)
+    ) {
+      this.setState({ conservativeCount: this.state.conservativeCount + 1 });
+    }
+  });
+}
+  fetchData = (userId) => {
+    console.log(userId)
+    this.setState({
+      userId,
+    });
+    fetch(`${API}/saved-articles`)
+      .then((articlesRes) => articlesRes.json())
+      .then((savedArticles) => {
+        this.setState({
+          savedArticles: savedArticles.filter(
+            (article) => article.user_id.toString() === userId.toString()
+          ),
+        })
+        this.countSavedArticles();
+      }).catch((res) => {
+          this.setState({ error: res.error });
+        });
+  };
 
   saveArticle = (article) => {
     const index = this.state.savedArticles.findIndex(
@@ -45,6 +101,7 @@ class App extends React.Component {
     );
     this.setState({ savedArticles: newSavedArticles });
   };
+
 
   countUpSavedArticles = (article) => {
     const index = this.state.savedArticles.findIndex(
@@ -76,11 +133,9 @@ class App extends React.Component {
   };
 
   countDownSavedArticles = (article) => {
-    const exist = this.state.savedArticles.find(
-      (item) =>  {
-        return item.id === article.id;
-      }
-    );
+    const exist = this.state.savedArticles.find((item) => {
+      return item.id === article.id;
+    });
     if (exist) {
       if (
         /msnbc/.test(article.url) ||
@@ -114,6 +169,12 @@ class App extends React.Component {
             <Route
               exact
               path={"/"}
+              render={(props) => {
+                return <LoginForm {...props} setUserId={this.fetchData} />;
+              }}
+            />
+            <Route
+              path={"/home"}
               render={() => {
                 return <MainPage />;
               }}
