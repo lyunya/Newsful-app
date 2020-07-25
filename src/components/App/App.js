@@ -25,7 +25,7 @@ class App extends React.Component {
       deleteSave: this.deleteSave,
       countUpSavedArticles: this.countUpSavedArticles,
       countDownSavedArticles: this.countDownSavedArticles,
-      userId: this.userId,
+      user_id: this.user_id,
       liberalCount: 0,
       neutralCount: 0,
       conservativeCount: 0,
@@ -41,7 +41,7 @@ class App extends React.Component {
   }
 
 countSavedArticles = () => {
-  this.state.savedArticles.map((article) => {
+  this.state.savedArticles.forEach((article) => {
     if (
       /msnbc/.test(article.url) ||
       /huffpost/.test(article.url) ||
@@ -65,17 +65,16 @@ countSavedArticles = () => {
     }
   });
 }
-  fetchData = (userId) => {
-    console.log(userId)
+  fetchData = (user_id) => {
     this.setState({
-      userId,
+      user_id: parseInt(user_id),
     });
     fetch(`${API}/saved-articles`)
       .then((articlesRes) => articlesRes.json())
       .then((savedArticles) => {
         this.setState({
           savedArticles: savedArticles.filter(
-            (article) => article.user_id.toString() === userId.toString()
+            (article) => article.user_id.toString() === user_id.toString()
           ),
         })
         this.countSavedArticles();

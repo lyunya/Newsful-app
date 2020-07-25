@@ -1,30 +1,76 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Article.css";
-import { NewsfulContext } from "../../components/App";
+import { NewsfulContext } from "../App";
+import TokenService from "../../services/token-service";
+import config from "../../config";
 
 const Article = ({ article }) => {
   const contextValue = useContext(NewsfulContext);
+  const [isError, setIsError] = useState(false);
 
   const setSavedArticle = (article) => {
-    checkSaved(article)
+    const savedArticle = {
+      title: article.title,
+      url: article.url,
+      image: article.image,
+      user_id: contextValue.user_id,
+    };
+    fetch(`${config.API_ENDPOINT}/saved-articles`, {
+      method: "POST",
+      body: JSON.stringify(savedArticle),
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => {
+            console.log(`Error is: ${error}`);
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        contextValue.saveArticle(data);
+        checkSaved(article);
+      })
+      .catch((error) => {
+        setIsError(error);
+      });
     contextValue.countUpSavedArticles(article);
-    contextValue.saveArticle(article);  
   };
 
   const deleteSavedArticle = (article) => {
-    // checkSaved(article)
     contextValue.countDownSavedArticles(article);
-    contextValue.deleteSave(article);
-  }
+    fetch(`${config.API_ENDPOINT}/saved-articles/${article.id}`, {
+      method: "DELETE",
+      headers: {
+        "content-Type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((e) => Promise.reject(e));
+        }
+      })
+      .then(() => {
+        contextValue.deleteSave(article);
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
+  };
 
   const checkSaved = (article) => {
-    console.log(article)
-    return contextValue.savedArticles.find((a) => a.id === article.id);
+    return contextValue.savedArticles.find((a) => a.url === article.url);
   };
 
   // const style = checkSaved(article) ? "fas" : "far";
-  
+
   return (
     <div className="articles">
       <div className="article-item">
@@ -55,6 +101,7 @@ const Article = ({ article }) => {
               />
             )}
           </div>
+          {isError ? <div>Unable to save</div> : null}
         </div>
       </div>
     </div>

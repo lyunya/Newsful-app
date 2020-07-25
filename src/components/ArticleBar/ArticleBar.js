@@ -12,17 +12,11 @@ const ArticleBar = ({ data, heading }) => {
   const scrollMobile = () => {
     return isMobile ? scroller(scrollWrapperRef) : null;
   }
-  
+
 
 //need to implement functionaly to hide arrows
   const scroll = (scrollOffset) => {
     scrollWrapperRef.current.scrollLeft += scrollOffset;
-    if(scrollWrapperRef.current.scrollLeft > 0){
-      //remove hidden class from left paddle
-    }
-    if(scrollWrapperRef.current.scrollLeft === scrollWrapperRef.current.scrollLeftMax){
-      //add hidden class to right paddle
-    }
   };
 
   return (
@@ -50,7 +44,7 @@ const ArticleBar = ({ data, heading }) => {
               </svg>
             }
           </div>
-          <div className="right-paddle " onClick={() => scroll(200)}>
+          <div className="right-paddle" onClick={() => scroll(200)}>
             {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
