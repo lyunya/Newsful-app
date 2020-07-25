@@ -6,6 +6,7 @@ import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
 import "./App.css";
 import MainPage from "../MainPage/MainPage";
 import LoginForm from "../LoginForm/LoginForm";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import TokenService from "../../services/token-service";
 import Config from "../../config";
@@ -39,7 +40,7 @@ class App extends React.Component {
     }
   }
 
-countSavedArticles(){
+countSavedArticles = () => {
   this.state.savedArticles.map((article) => {
     if (
       /msnbc/.test(article.url) ||
@@ -173,6 +174,7 @@ countSavedArticles(){
                 return <LoginForm {...props} setUserId={this.fetchData} />;
               }}
             />
+            <Route path="/registration" component={RegistrationForm} />
             <Route
               path={"/home"}
               render={() => {
