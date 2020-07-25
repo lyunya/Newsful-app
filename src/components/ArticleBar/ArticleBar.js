@@ -23,7 +23,7 @@ const ArticleBar = ({ data, heading }) => {
     <div className="article-bar">
       <div className="articlebar-header">
         <h2 className="bias-heading">{heading}</h2>
-        <div className="arrows">
+        {!isMobile ?         <div className="arrows">
           <div className="left-paddle" onClick={() => scroll(-200)}>
             {
               <svg
@@ -64,7 +64,7 @@ const ArticleBar = ({ data, heading }) => {
               </svg>
             }
           </div>
-        </div>
+        </div> : null}
       </div>
       <div
         className="bias-content"
