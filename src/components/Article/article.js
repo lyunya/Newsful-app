@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Article.css";
 import { NewsfulContext } from "../App";
 import TokenService from "../../services/token-service";
+import useDeviceDetect from "../../useDeviceDetect";
 import config from "../../config";
 
 const Article = ({ article }) => {
   const contextValue = useContext(NewsfulContext);
   const [isError, setIsError] = useState(false);
+  const { isMobile } = useDeviceDetect();
 
   const setSavedArticle = (article) => {
     const savedArticle = {
@@ -92,12 +94,14 @@ const Article = ({ article }) => {
                 icon={["fas", "bookmark"]}
                 className="bookmark"
                 onClick={() => deleteSavedArticle(article)}
+                size={isMobile ? "2x" : "1x"}
               />
             ) : (
               <FontAwesomeIcon
                 icon={["far", "bookmark"]}
                 className="bookmark"
                 onClick={() => setSavedArticle(article)}
+                size={isMobile ? "2x" : "1x"}
               />
             )}
           </div>
