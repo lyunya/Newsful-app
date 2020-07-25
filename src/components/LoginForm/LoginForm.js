@@ -95,14 +95,14 @@ export default class LoginForm extends Component {
         {error ? <p>{error}</p> : null}
         <p>test account - email: demo@demo.com & password: T@pwater1</p>
         <br />
-        {/* <p>Are you a new user? Create an account</p>
+        <p>Are you a new user? Create an account</p>
         <Link
           to={"/registration"}
           style={{ textDecoration: "none" }}
           className="registrationPageLink"
         >
           <button>Register</button>
-        </Link> */}
+        </Link>
       </div>
     );
   }

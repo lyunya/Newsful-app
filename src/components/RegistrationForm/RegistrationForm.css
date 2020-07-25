@@ -1,0 +1,12 @@
+.registrationWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.create-btn {
+  margin-top: 4%;
+  margin-left: 5%;
+}
