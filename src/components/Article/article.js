@@ -94,14 +94,14 @@ const Article = ({ article }) => {
                 icon={["fas", "bookmark"]}
                 className="bookmark"
                 onClick={() => deleteSavedArticle(article)}
-                size={isMobile ? "2x" : "1x"}
+                size={isMobile ? "1.2x" : "1x"}
               />
             ) : (
               <FontAwesomeIcon
                 icon={["far", "bookmark"]}
                 className="bookmark"
                 onClick={() => setSavedArticle(article)}
-                size={isMobile ? "2x" : "1x"}
+                size={isMobile ? "1.2x" : "1x"}
               />
             )}
           </div>
