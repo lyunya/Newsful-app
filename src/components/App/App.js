@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
+import { faSearch as fasSearch } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import MainPage from "../MainPage/MainPage";
 import LoginForm from "../LoginForm/LoginForm";
@@ -12,7 +13,7 @@ import TokenService from "../../services/token-service";
 import Config from "../../config";
 const API = Config.API_ENDPOINT;
 
-library.add(fasBookmark, farBookmark);
+library.add(fasBookmark, farBookmark, fasSearch);
 
 export const NewsfulContext = React.createContext();
 

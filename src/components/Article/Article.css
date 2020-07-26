@@ -41,6 +41,8 @@
 .article_headline {
   font-size: 12px;
   font-weight: bold;
+  font-family: 'Open Sans';
+  color: black;
 }
 
 .bookmark {

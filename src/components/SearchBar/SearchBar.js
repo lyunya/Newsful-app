@@ -23,12 +23,17 @@ const SearchBar = (props) => {
       <input
         value={searchValue}
         onChange={handleSearchInputChanges}
-        placeholder={'search for articles'}
+        placeholder={"Search for articles"}
         type="search"
         role="search"
-        className="searchBar"
+        className="search-bar"
       />
-      <input onClick={callSearchFunction} type="submit" value="SEARCH" />
+      <input
+        className="search-button"
+        onClick={callSearchFunction}
+        type="submit"
+        value="SEARCH"
+      />
     </form>
   );
 };

@@ -9,19 +9,22 @@ const SavedArticles = () => {
   const contextValue = useContext(NewsfulContext);
 
   return (
-    <div className="saved-articles">
+    <>
       <Nav />
-      <h1>Saved Articles</h1>
-      <p>
-        You have saved {contextValue.liberalCount} liberal, {contextValue.neutralCount} neutral, and{" "}
-        {contextValue.conservativeCount} conservative articles
-      </p>
-      <main className="main">
-        {savedArticles.map((article, index) => {
-          return <Article article={article} key={index} />;
-        })}
-      </main>
-    </div>
+      <div className="saved-articles">
+        <h1>Saved Articles</h1>
+        <p>
+          You have saved {contextValue.liberalCount} liberal,{" "}
+          {contextValue.neutralCount} neutral, and{" "}
+          {contextValue.conservativeCount} conservative articles
+        </p>
+        <main className="main">
+          {savedArticles.map((article, index) => {
+            return <Article article={article} key={index} />;
+          })}
+        </main>
+      </div>
+    </>
   );
 };
 
