@@ -28,10 +28,18 @@
 .article {
   background-color: white;
   border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 40px -14px rgba(53, 53, 53, 0.35);
   text-decoration: none;
   color: black;
   overflow: hidden;
+}
+
+.article.liberal {
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 255, 0.45);
+}
+
+.article.conservative {
+  box-shadow: 0 20px 40px -14px rgba(255, 0, 0, 0.45);
 }
 
 .article-content {

@@ -70,13 +70,25 @@ const Article = ({ article }) => {
   const checkSaved = (article) => {
     return contextValue.savedArticles.find((a) => a.url === article.url);
   };
+  const articleClasses = ["article"];
 
-  // const style = checkSaved(article) ? "fas" : "far";
+  const style = () => {
+     /msnbc/.test(article.url) ||
+      /huffpost/.test(article.url) ||
+      /cnn/.test(article.url)
+      ? articleClasses.push("liberal")
+      : /foxnews/.test(article.url) ||
+        /breitbart/.test(article.url) ||
+        /nationalreview/.test(article.url)
+      ? articleClasses.push("conservative")
+      : articleClasses.push("neutral");
+  };
 
   return (
     <div className="articles">
       <div className="article-item">
-        <div className="article">
+        {style()}
+        <div className={articleClasses.join(" ")}>
           <a href={article.url} target="_blank" rel="noopener noreferrer">
             <img
               className="article-image"

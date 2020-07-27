@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+.liberal-bar{
+  background-color: #f25a41;
+  
+}
+
 .spinner:not([hidden]) {
   position: fixed;
   top: 0;

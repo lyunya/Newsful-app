@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ArticleBar from "../ArticleBar/ArticleBar";
-
 import Nav from "../Navigation/Header";
 import {
   conserv_popular_news,
@@ -12,6 +11,8 @@ import {
   liberal_search_news,
 } from "../../newsful-helpers";
 import "./MainPage.css";
+
+
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
