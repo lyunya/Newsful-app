@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { NewsfulContext } from "../App";
 import Article from "./Article";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
+//   const contextValue = useContext(NewsfulContext);
   const article = {
       id: 1,
       title: "This is a test article",
@@ -13,7 +15,9 @@ it("renders without crashing", () => {
   }
   ReactDOM.render(
     <BrowserRouter>
-      <Article article={article} />
+      <NewsfulContext.Provider value={{ savedArticles: [] }}>
+        <Article article={article} />
+      </NewsfulContext.Provider>
     </BrowserRouter>,
     div
   );

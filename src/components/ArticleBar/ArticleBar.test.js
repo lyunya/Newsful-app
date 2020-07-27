@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { NewsfulContext } from "../App";
 import ArticleBar from "./ArticleBar";
 
 it("renders without crashing", () => {
@@ -21,7 +22,9 @@ it("renders without crashing", () => {
     ];
   ReactDOM.render(
     <BrowserRouter>
-      <ArticleBar data={articles} />
+      <NewsfulContext.Provider value={{ savedArticles: [] }}>
+        <ArticleBar data={articles} />
+      </NewsfulContext.Provider>
     </BrowserRouter>,
     div
   );
