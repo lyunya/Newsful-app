@@ -29,7 +29,7 @@ const Article = ({ article }) => {
       .then((res) => {
         if (!res.ok) {
           return res.json().then((error) => {
-            console.log(`Error is: ${error}`);
+            setIsError(error);
             throw error;
           });
         }
@@ -62,8 +62,8 @@ const Article = ({ article }) => {
       .then(() => {
         contextValue.deleteSave(article);
       })
-      .catch((err) => {
-        console.log({ err });
+      .catch((error) => {
+        setIsError(error);
       });
   };
 
@@ -73,13 +73,13 @@ const Article = ({ article }) => {
   const articleClasses = ["article"];
 
   const style = () => {
-     /msnbc/.test(article.url) ||
-      /huffpost/.test(article.url) ||
-      /cnn/.test(article.url)
+     /msnbc.com/.test(article.url) ||
+      /huffpost.com/.test(article.url) ||
+      /cnn.com/.test(article.url)
       ? articleClasses.push("liberal")
-      : /foxnews/.test(article.url) ||
-        /breitbart/.test(article.url) ||
-        /nationalreview/.test(article.url)
+      : /foxnews.com/.test(article.url) ||
+        /breitbart.com/.test(article.url) ||
+        /nationalreview.com/.test(article.url)
       ? articleClasses.push("conservative")
       : articleClasses.push("neutral");
   };

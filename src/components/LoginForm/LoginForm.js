@@ -41,7 +41,10 @@ export default class LoginForm extends Component {
     return (
       <div className="loginWrapper">
         <div className="Intro">
-          <h1>Newsful</h1>
+          <h1>Welcome to Newsful</h1>
+    <p>We are all guilty of only reading news from sources that align with our political beliefs. {<br />}This app allows you
+            to read news from both sides of the spectrum and enables you to see how much bias is in our news.
+          </p>
         </div>
         <Formik
           initialValues={{ email: "", password: "" }}

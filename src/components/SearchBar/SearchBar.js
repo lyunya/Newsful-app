@@ -19,21 +19,25 @@ const SearchBar = (props) => {
   };
 
   return (
-    <form className="search">
-      <input
-        value={searchValue}
-        onChange={handleSearchInputChanges}
-        placeholder={"Search for articles"}
-        type="search"
-        role="search"
-        className="search-bar"
-      />
-      <input
-        className="search-button"
-        onClick={callSearchFunction}
-        type="submit"
-        value="SEARCH"
-      />
+    <form className="search" onSubmit={callSearchFunction}>
+      <label htmlFor="search news">
+        <input
+          value={searchValue}
+          onChange={handleSearchInputChanges}
+          placeholder={"Search for articles"}
+          type="search"
+          role="search"
+          className="search-bar"
+          required
+        />
+      </label>
+      <label htmlFor="submit search button">
+        <input
+          className="search-button"
+          type="submit"
+          value="SEARCH"
+        />
+      </label>
     </form>
   );
 };

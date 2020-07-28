@@ -1,9 +1,18 @@
 .loginWrapper {
   display: flex;
+  width: 100%;
+  height: 100vh;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px #706060;
+  background-position: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url(../../images/Red-Blue-1125x2436.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
 }
 
 .Intro {
@@ -49,6 +58,9 @@ button:hover {
 }
 
 @media screen and (min-width: 768px) {
+  .loginWrapper{
+    background-image: url(../../images/Red-Blue-1440x900.png);
+  }
   .Intro {
     width: 650px;
   }
