@@ -19,25 +19,22 @@ const SearchBar = (props) => {
   };
 
   return (
-    <form className="search" onSubmit={callSearchFunction}>
-      <label htmlFor="search news">
+    <form className="search" role='search' onSubmit={callSearchFunction}>
         <input
           value={searchValue}
           onChange={handleSearchInputChanges}
           placeholder={"Search for articles"}
           type="search"
-          role="search"
+          aria-label="search news"
           className="search-bar"
           required
         />
-      </label>
-      <label htmlFor="submit search button">
         <input
           className="search-button"
+          aria-label="submit search button"
           type="submit"
           value="SEARCH"
         />
-      </label>
     </form>
   );
 };

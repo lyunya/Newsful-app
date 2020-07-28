@@ -73,9 +73,9 @@ const Article = ({ article }) => {
   const articleClasses = ["article"];
 
   const style = () => {
-     /msnbc.com/.test(article.url) ||
-      /huffpost.com/.test(article.url) ||
-      /cnn.com/.test(article.url)
+    /msnbc.com/.test(article.url) ||
+    /huffpost.com/.test(article.url) ||
+    /cnn.com/.test(article.url)
       ? articleClasses.push("liberal")
       : /foxnews.com/.test(article.url) ||
         /breitbart.com/.test(article.url) ||
@@ -101,19 +101,22 @@ const Article = ({ article }) => {
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className="article_headline">{article.title}</div>
             </a>
+
             {checkSaved(article) ? (
               <FontAwesomeIcon
                 icon={["fas", "bookmark"]}
                 className="bookmark"
+                title="remove bookmark"
                 onClick={() => deleteSavedArticle(article)}
-                size={isMobile ? "1.2x" : "1x"}
+                size={isMobile ? "lg" : "1x"}
               />
             ) : (
               <FontAwesomeIcon
                 icon={["far", "bookmark"]}
                 className="bookmark"
+                title="bookmark"
                 onClick={() => setSavedArticle(article)}
-                size={isMobile ? "1.2x" : "1x"}
+                size={isMobile ? "lg" : "1x"}
               />
             )}
           </div>
