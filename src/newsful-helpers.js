@@ -3,16 +3,16 @@
 // export const search_news =
 //          "https://newsapi.org/v2/everything?sources=msnbc,the-huffington-post,cnn,abc-news,bbc-news,usa-today,breitbart-news,fox-news,national-review&apiKey=fcea81b72a8041cb91c36892e482ab0d&language=en&sortBy=publishedAt&pageSize=33&q=";
 
-export const new_popular_news =
-         "https://api.currentsapi.services/v1/latest-news?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=msnbc.com,cnn.com,foxnews.com,huffpost.com,abcnews.go.com,apnews.com,usatoday.com,breitbart.com,nationalreview.com"; 
+// export const new_popular_news =
+//          "https://api.currentsapi.services/v1/latest-news?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=msnbc.com,cnn.com,foxnews.com,huffpost.com,abcnews.go.com,apnews.com,usatoday.com,breitbart.com,nationalreview.com"; 
          
-export const new_search_news =
-         "https://api.currentsapi.services/v1/search?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=msnbc.com,cnn.com,foxnews.com,huffpost.com,abcnews.go.com,apnews.com,usatoday.com,breitbart.com,nationalreview.com&keywords=";
+// export const new_search_news =
+//          "https://api.currentsapi.services/v1/search?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=msnbc.com,cnn.com,foxnews.com,huffpost.com,abcnews.go.com,apnews.com,usatoday.com,breitbart.com,nationalreview.com&keywords=";
 
 export const conserv_search_news =
          "https://api.currentsapi.services/v1/search?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=foxnews.com,breitbart.com&keywords=";
 export const neutral_search_news =
-         "https://api.currentsapi.services/v1/search?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=bbc.com,npr.com,reuters.com&keywords=";
+         "https://api.currentsapi.services/v1/search?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=bbc.com,npr.com&keywords=";
 
 export const liberal_search_news =
          "https://api.currentsapi.services/v1/search?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=msnbc.com,huffpost.com&type=1&keywords=";
@@ -21,6 +21,6 @@ export const conserv_popular_news =
   "https://api.currentsapi.services/v1/latest-news?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=foxnews.com,breitbart.com"; 
 
 export const neutral_popular_news =
-         "https://api.currentsapi.services/v1/latest-news?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=bbc.com,npr.com,reuters.com"; 
+         "https://api.currentsapi.services/v1/latest-news?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=bbc.com,npr.com"; 
 export const liberal_popular_news =
          "https://api.currentsapi.services/v1/latest-news?apiKey=U-KpTJ3lU2QW7BjPvER-ArREpL9Le5wHQ-KdFLco52cBbJe7&domain=msnbc.com,huffpost.com&type=1"; 
