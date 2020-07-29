@@ -54,6 +54,10 @@
 .right-paddle{
   float: right;
 }
+
+.error-message{
+  padding-left: 1%;
+}
 .hidden {
 	display: none;
 }

@@ -68,9 +68,9 @@ const ArticleBar = ({ data, heading }) => {
         ) : null}
       </div>
       <div className="bias-content" ref={scrollWrapperRef}>
-        {data.map((article, index) => {
+        {data.length > 0 ? data.map((article, index) => {
           return <Article article={article} key={index} />;
-        })}
+        }) : <div className="error-message">No results. Try another search topic!</div>}
       </div>
     </div>
   );
