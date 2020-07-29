@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Newsful
 
-## Available Scripts
+### This app was developed to help you see how news sources from all sides of the political spectrum report on what's going on in the world.
 
-In the project directory, you can run:
+## Description
+#### As we increasingly get our news from digital media sources, it is important to be aware of the role that bias plays in what we're reading. I know for myself and many others, we tend to only read news from sources that align with where we are on the political spectrum. I created this app that shows you how stories are reported on across conservative, liberal, and neutral news outlets. This will show how stories are reported on from different viewpoints.
 
-### `npm start`
+## Functionality
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This application's functionality includes:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* Create new accounts and log in with those credentials
+* See the most popular new stories of the day
+* Search for any news topic and see how Conservative, Liberal, and Neutral news sources are reporting on it.
+* Save/Delete news articles to your account
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Application Website
+https://newsful.vercel.app/
 
-### `npm run build`
+ Login Page
+![image of Login Page](https://i.ibb.co/y4KkYGN/Screenshot-2020-07-29-Newsful.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Home Page
+![image of Home Page](https://i.ibb.co/hsRVFgb/Screenshot-2020-07-29-Newsful-1.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Saved Articles Page
+![image of Saved Articles Page](https://i.ibb.co/4FwMC5d/Screenshot-2020-07-29-Newsful-2.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Security
+Application uses JWT authentication
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Technology Used
+* HTML
+* CSS
+* JavaScript
+* React
+* Jest
+* Enzyme
