@@ -132,7 +132,7 @@ const MainPage = () => {
     const neutral = articles.filter((article) => {
       return (
         article.url.includes("reuters.com") ||
-        article.url.includes("npr.com") ||
+        article.url.includes("npr.org") ||
         article.url.includes("bbc.com")
       );
     });
