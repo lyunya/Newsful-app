@@ -68,5 +68,9 @@
 }
 
 .bias-heading.liberal{
-  color: blue
+  color: #175ab8;
+}
+
+.bias-heading.conservative{
+  color: #BF0D3E;
 }

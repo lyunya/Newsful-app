@@ -18,11 +18,22 @@ const ArticleBar = ({ data, heading }) => {
     scrollWrapperRef.current.scrollLeft += scrollOffset;
   };
 
+  const articleBarClasses = ["bias-heading"];
+
+  const style = () => {
+    /Liberal/.test(heading)
+      ? articleBarClasses.push("liberal")
+      :  /Conservative/.test(heading)
+      ? articleBarClasses.push("conservative")
+      : articleBarClasses.push("neutral");
+  };
 
   return (
     <div className="article-bar">
       <div className="articlebar-header">
-        <h2 className="bias-heading">{heading}</h2>
+        {style()}
+        <h2 className={articleBarClasses.join(" ")}>{heading}</h2>
+        {scrollMobile}
         {!isMobile ? (
           <div className="arrows">
             <div className="left-paddle" onClick={() => scroll(-200)}>
@@ -69,9 +80,15 @@ const ArticleBar = ({ data, heading }) => {
         ) : null}
       </div>
       <div className="bias-content" ref={scrollWrapperRef}>
-        {data.length > 0 ? data.map((article, index) => {
-          return <Article article={article} key={index} />;
-        }) : <div className="error-message">No results. Try another search topic!</div>}
+        {data.length > 0 ? (
+          data.map((article, index) => {
+            return <Article article={article} key={index} />;
+          })
+        ) : (
+          <div className="error-message">
+            No results. Try another search topic!
+          </div>
+        )}
       </div>
     </div>
   );
