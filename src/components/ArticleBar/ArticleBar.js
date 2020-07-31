@@ -8,16 +8,15 @@ const ArticleBar = ({ data, heading }) => {
   const scrollWrapperRef = useRef();
   const { isMobile } = useDeviceDetect();
 
-  //do I need to use this if it gets used on load
   const scrollMobile = () => {
     return isMobile ? scroller(scrollWrapperRef) : null;
   };
 
-  //need to implement functionaly to hide arrows
   const scroll = (scrollOffset) => {
     scrollWrapperRef.current.scrollLeft += scrollOffset;
   };
 
+  //add class name for styling purposes
   const articleBarClasses = ["bias-heading"];
 
   const style = () => {

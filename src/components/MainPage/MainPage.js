@@ -19,6 +19,8 @@ const MainPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  //makes 3 seperate fetch calls to ensure enough results for each category
+  //liberal, conservative, neutral
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
@@ -121,6 +123,7 @@ const MainPage = () => {
       });
   };
 
+  //checks the article url to sort into correct category
   const seperateArticleBias = (articles) => {
     const conservative = articles.filter((article) => {
       return (

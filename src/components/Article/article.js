@@ -67,6 +67,7 @@ const Article = ({ article }) => {
       });
   };
 
+  //this determines which bookmark icon to show if saved or not
   const checkSaved = (article) => {
     return contextValue.savedArticles.find((a) => a.url === article.url);
   };
