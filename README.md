@@ -22,7 +22,7 @@ https://newsful.vercel.app/
 ![image of Login Page](https://i.ibb.co/y4KkYGN/Screenshot-2020-07-29-Newsful.png)
 
 Home Page
-![image of Home Page](https://i.ibb.co/hsRVFgb/Screenshot-2020-07-29-Newsful-1.png)
+![image of Home Page](https://i.ibb.co/nrNvPWt/Newsful-app.png)
 
 Saved Articles Page
 ![image of Saved Articles Page](https://i.ibb.co/4FwMC5d/Screenshot-2020-07-29-Newsful-2.png)
