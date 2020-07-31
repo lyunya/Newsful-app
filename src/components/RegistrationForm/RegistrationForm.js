@@ -40,7 +40,7 @@ export default class RegistrationForm extends Component {
     const { error } = this.state;
     return (
       <>
-        <div className="registrationWrapper">
+        <div className="registration-wrapper">
           <div className="Intro">
             <h1>Newsful</h1>
           </div>
@@ -97,10 +97,7 @@ export default class RegistrationForm extends Component {
           <p>After creating an account, please log in with your credentials</p>
           <p>
             Already a user?{" "}
-            <Link
-              to={"/"}
-              style={{ textDecoration: "none" }}
-            >
+            <Link to={"/"} style={{ textDecoration: "none" }}>
               <button>Log in</button>
             </Link>
           </p>

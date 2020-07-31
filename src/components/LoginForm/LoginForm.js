@@ -42,8 +42,9 @@ export default class LoginForm extends Component {
       <div className="loginWrapper">
         <div className="Intro">
           <h1>Welcome to Newsful</h1>
-    <p>We are all guilty of only reading news from sources that align with our political beliefs. {<br />}This app allows you
-            to read news from both sides of the spectrum and enables you to see how much bias is in our news.
+    <p>Whose views are in your news? {<br />}Many news sources have a political agenda behind their reporting, 
+    but the Newsful app helps you identify the bias and expose you to a variety of sources. </p>
+    {<br />} <p>Read articles from all sides of the political spectrum and save news stories to read later.
           </p>
         </div>
         <Formik

@@ -28,18 +28,18 @@
 .article {
   background-color: white;
   border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(53, 53, 53, 0.35);
+  box-shadow: 0 20px 40px -14px rgba(53, 53, 53, 0.6);
   text-decoration: none;
   color: black;
   overflow: hidden;
 }
 
 .article.liberal {
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 255, 0.45);
+  box-shadow: inset 0 20px 40px -8px rgba(0, 0, 255, 0.6);
 }
 
 .article.conservative {
-  box-shadow: 0 20px 40px -14px rgba(255, 0, 0, 0.45);
+  box-shadow: inset 0 20px 40px -8px rgba(255, 0, 0, 0.6);
 }
 
 .article-content {
