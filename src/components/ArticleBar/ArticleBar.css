@@ -33,15 +33,19 @@
   margin-bottom: 0px;
   font-family: "Open Sans";
   padding-left: 1%;
-  color: black;
+  /* color: black; */
   font-size: 1.6rem;
 }
 
+.article-bar{
+  padding-bottom: 2%;
+}
 
 .articlebar-header{
   display: flex;
   flex-flow: row wrap;
   position: relative;
+  margin-top: -3%;
 }
 .arrows{
   position: absolute;
@@ -61,4 +65,8 @@
 }
 .hidden {
 	display: none;
+}
+
+.bias-heading.liberal{
+  color: blue
 }

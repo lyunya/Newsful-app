@@ -28,7 +28,7 @@
 .article {
   background-color: white;
   border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(53, 53, 53, 0.6);
+  box-shadow: inset 0 20px 40px -14px rgba(53, 53, 53, 0.6);
   text-decoration: none;
   color: black;
   overflow: hidden;
