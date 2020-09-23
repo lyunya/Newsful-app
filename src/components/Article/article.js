@@ -121,7 +121,7 @@ const Article = ({ article }) => {
               />
             )}
           </div>
-          {isError ? <div>Unable to save</div> : null}
+          {isError ? <div>Remove in Saved Articles</div> : null}
         </div>
       </div>
     </div>
