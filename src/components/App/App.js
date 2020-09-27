@@ -12,7 +12,6 @@ import SavedArticles from "../SavedArticles/SavedArticles";
 import TokenService from "../../services/token-service";
 import Config from "../../config";
 const API = Config.API_ENDPOINT;
-
 library.add(fasBookmark, farBookmark, fasSearch);
 
 export const NewsfulContext = React.createContext();
@@ -98,7 +97,7 @@ countSavedArticles = () => {
 
   deleteSave = (article) => {
     const newSavedArticles = this.state.savedArticles.filter(
-      (item) => item.id !== article.id
+      (item) => item.url !== article.url
     );
     this.setState({ savedArticles: newSavedArticles });
   };

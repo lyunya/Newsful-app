@@ -48,7 +48,7 @@ const MainPage = () => {
       apiRequest2: {},
       apiRequest3: {},
     };
-
+    
     Promise.all([apiRequest1, apiRequest2, apiRequest3])
       .then((values) => {
         combinedData["apiRequest1"] = values[0];
