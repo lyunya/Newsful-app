@@ -44,8 +44,7 @@ const Article = ({ article }) => {
       });
     contextValue.countUpSavedArticles(article);
   };
-  // I need to write a funciton that grabs the articleId from saved artices, I can search for article with matching url
-  //from article to context.savedArticles and then grab the id from savedArticles
+
   const deleteSavedArticle = (article) => {
     let articleId;
     contextValue.savedArticles.forEach((savedArticle) => {
