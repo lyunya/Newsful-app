@@ -3,12 +3,12 @@ import SearchBar from "../SearchBar/SearchBar";
 import ArticleBar from "../ArticleBar/ArticleBar";
 import Nav from "../Navigation/Header";
 import {
-  conserv_popular_news,
-  neutral_popular_news,
-  liberal_popular_news,
-  conserv_search_news,
-  neutral_search_news,
-  liberal_search_news,
+  conserv_popular_news_api,
+  neutral_popular_news_api,
+  liberal_popular_news_api,
+  conserv_search_news_api,
+  neutral_search_news_api,
+  liberal_search_news_api,
 } from "../../newsful-helpers";
 import "./MainPage.css";
 
@@ -24,98 +24,62 @@ const MainPage = () => {
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
+
     const abortController = new AbortController();
     const signal = abortController.signal;
 
-    let apiRequest1 = fetch(conserv_popular_news, {
-      signal: signal,
-    }).then((response) => {
-      return response.json();
-    });
-    let apiRequest2 = fetch(neutral_popular_news, {
-      signal: signal,
-    }).then((response) => {
-      return response.json();
-    });
-    let apiRequest3 = fetch(liberal_popular_news, {
-      signal: signal,
-    }).then((response) => {
-      return response.json();
-    });
-
-    let combinedData = {
-      apiRequest1: {},
-      apiRequest2: {},
-      apiRequest3: {},
-    };
-    
-    Promise.all([apiRequest1, apiRequest2, apiRequest3])
-      .then((values) => {
-        combinedData["apiRequest1"] = values[0];
-        combinedData["apiRequest2"] = values[1];
-        combinedData["apiRequest3"] = values[2];
-        return combinedData;
+    Promise.all([
+      fetch(conserv_popular_news_api, { signal }),
+      fetch(neutral_popular_news_api, { signal }),
+      fetch(liberal_popular_news_api, { signal }),
+    ])
+      .then((responses) => {
+        return Promise.all(
+          responses.map((response) => {
+            return response.json();
+          })
+        );
       })
-      .then((responseJson) => {
-        const results = [
-          responseJson.apiRequest1.news,
-          responseJson.apiRequest2.news,
-          responseJson.apiRequest3.news,
-        ];
-        const finalResults = results.flat();
+      .then((data) => {
+        const results = [data[0].news, data[1].news, data[2].news].flat();
         setIsLoading(false);
-        setArticles(finalResults);
-        seperateArticleBias(finalResults);
+        setArticles(results);
+        seperateArticleBias(results);
       })
-      .catch((error) => {
-        setIsError(true);
-        console.error("error:", error);
-      });
-    return function cleanup() {
-      abortController.abort();
-    };
+        .catch((error) => {
+          setIsError(true);
+          console.error("error:", error);
+        });
+      return function cleanup() {
+        abortController.abort();
+      };
   }, []);
 
-  const search = (query) => {
+  const search = query => {
     setIsLoading(true);
     setIsError(false);
-    let apiRequest1 = fetch(`${conserv_search_news}${query}`).then(function (
-      response
-    ) {
-      return response.json();
-    });
-    let apiRequest2 = fetch(`${neutral_search_news}${query}`).then(function (
-      response
-    ) {
-      return response.json();
-    });
-    let apiRequest3 = fetch(`${liberal_search_news}${query}`).then(function (
-      response
-    ) {
-      return response.json();
-    });
-    let combinedData = {
-      apiRequest1: {},
-      apiRequest2: {},
-      apiRequest3: {},
-    };
+    let apiRequest1 = fetch(`${conserv_search_news_api}${query}`).then(
+      function (response) {
+        return response.json();
+      }
+    );
+    let apiRequest2 = fetch(`${neutral_search_news_api}${query}`).then(
+      function (response) {
+        return response.json();
+      }
+    );
+    let apiRequest3 = fetch(`${liberal_search_news_api}${query}`).then(
+      function (response) {
+        return response.json();
+      }
+    );
+
     Promise.all([apiRequest1, apiRequest2, apiRequest3])
-      .then(function (values) {
-        combinedData["apiRequest1"] = values[0];
-        combinedData["apiRequest2"] = values[1];
-        combinedData["apiRequest3"] = values[2];
-        return combinedData;
-      })
-      .then((responseJson) => {
-        const results = [
-          responseJson.apiRequest1.news,
-          responseJson.apiRequest2.news,
-          responseJson.apiRequest3.news,
-        ];
-        const finalResults = results.flat();
+      .then((data) => {
+        const results = [data[0].news, data[1].news, data[2].news].flat();
         setIsLoading(false);
-        setArticles(finalResults);
-        seperateArticleBias(finalResults);
+        setArticles(results);
+        seperateArticleBias(results);
       })
       .catch((error) => {
         setIsError(true);
