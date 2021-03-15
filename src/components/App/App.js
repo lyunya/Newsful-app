@@ -1,16 +1,16 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBookmark as fasBookmark } from "@fortawesome/free-solid-svg-icons";
-import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
-import { faSearch as fasSearch } from "@fortawesome/free-solid-svg-icons";
-import "./App.css";
-import MainPage from "../MainPage/MainPage";
-import LoginForm from "../LoginForm/LoginForm";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import SavedArticles from "../SavedArticles/SavedArticles";
-import TokenService from "../../services/token-service";
-import Config from "../../config";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faBookmark as fasBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as farBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faSearch as fasSearch } from '@fortawesome/free-solid-svg-icons';
+import './App.css';
+import MainPage from '../MainPage/MainPage';
+import LoginForm from '../LoginForm/LoginForm';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import SavedArticles from '../SavedArticles/SavedArticles';
+import TokenService from '../../services/token-service';
+import Config from '../../config';
 const API = Config.API_ENDPOINT;
 library.add(fasBookmark, farBookmark, fasSearch);
 
@@ -29,42 +29,48 @@ class App extends React.Component {
       liberalCount: 0,
       neutralCount: 0,
       conservativeCount: 0,
-      error: null
+      error: null,
     };
   }
 
   componentDidMount() {
     const token = TokenService.hasAuthToken();
     if (token) {
-      this.fetchData(localStorage.getItem("userId"));
+      this.fetchData(localStorage.getItem('userId'));
     }
   }
 
-countSavedArticles = () => {
-  this.state.savedArticles.forEach((article) => {
-    if (
-      /msnbc/.test(article.url) ||
-      /huffpost/.test(article.url) ||
-      /cnn/.test(article.url)
-    ) {
-      this.setState({ liberalCount: this.state.liberalCount + 1 });
-    }
-    if (
-      /reuters/.test(article.url) ||
-      /npr/.test(article.url) ||
-      /bbc/.test(article.url)
-    ) {
-      this.setState({ neutralCount: this.state.neutralCount + 1 });
-    }
-    if (
-      /foxnews/.test(article.url) ||
-      /breitbart/.test(article.url) ||
-      /nationalreview/.test(article.url)
-    ) {
-      this.setState({ conservativeCount: this.state.conservativeCount + 1 });
-    }
-  });
-}
+  countSavedArticles = () => {
+    this.state.savedArticles.forEach((article) => {
+      if (
+        /msnbc/.test(article.url) ||
+        /huffpost/.test(article.url) ||
+        /cnn/.test(article.url)
+      ) {
+        this.setState((state) => {
+          return { liberalCount: state.liberalCount + 1 };
+        });
+      }
+      if (
+        /reuters/.test(article.url) ||
+        /npr/.test(article.url) ||
+        /bbc/.test(article.url)
+      ) {
+        this.setState((state) => {
+          return { neutralCount: state.neutralCount + 1 };
+        });
+      }
+      if (
+        /foxnews/.test(article.url) ||
+        /breitbart/.test(article.url) ||
+        /nationalreview/.test(article.url)
+      ) {
+        this.setState((state) => {
+          return { conservativeCount: state.conservativeCount + 1 };
+        });
+      }
+    });
+  };
   fetchData = (user_id) => {
     this.setState({
       user_id: parseInt(user_id),
@@ -76,11 +82,12 @@ countSavedArticles = () => {
           savedArticles: savedArticles.filter(
             (article) => article.user_id.toString() === user_id.toString()
           ),
-        })
-        this.countSavedArticles();
-      }).catch((res) => {
-          this.setState({ error: res.error });
         });
+        this.countSavedArticles();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   saveArticle = (article) => {
@@ -102,32 +109,38 @@ countSavedArticles = () => {
     this.setState({ savedArticles: newSavedArticles });
   };
 
-
   countUpSavedArticles = (article) => {
     const index = this.state.savedArticles.findIndex(
       (item) => item.id === article.id
     );
     if (index === -1) {
+      console.log(index);
       if (
         /msnbc/.test(article.url) ||
         /huffpost/.test(article.url) ||
         /cnn/.test(article.url)
       ) {
-        this.setState({ liberalCount: this.state.liberalCount + 1 });
+        this.setState((state) => {
+          return { liberalCount: state.liberalCount + 1 };
+        });
       }
       if (
         /reuters/.test(article.url) ||
         /npr/.test(article.url) ||
         /bbc/.test(article.url)
       ) {
-        this.setState({ neutralCount: this.state.neutralCount + 1 });
+        this.setState((state) => {
+          return { neutralCount: state.neutralCount + 1 };
+        });
       }
       if (
         /foxnews/.test(article.url) ||
         /breitbart/.test(article.url) ||
         /nationalreview/.test(article.url)
       ) {
-        this.setState({ conservativeCount: this.state.conservativeCount + 1 });
+        this.setState((state) => {
+          return { conservativeCount: state.conservativeCount + 1 };
+        });
       }
     }
   };
@@ -142,45 +155,51 @@ countSavedArticles = () => {
         /huffpost/.test(article.url) ||
         /cnn/.test(article.url)
       ) {
-        this.setState({ liberalCount: this.state.liberalCount - 1 });
+        this.setState((state) => {
+          return { liberalCount: state.liberalCount - 1 };
+        });
       }
       if (
         /reuters/.test(article.url) ||
         /npr/.test(article.url) ||
         /bbc/.test(article.url)
       ) {
-        this.setState({ neutralCount: this.state.neutralCount - 1 });
+        this.setState((state) => {
+          return { neutralCount: state.neutralCount - 1 };
+        });
       }
       if (
         /foxnews/.test(article.url) ||
         /breitbart/.test(article.url) ||
         /nationalreview/.test(article.url)
       ) {
-        this.setState({ conservativeCount: this.state.conservativeCount - 1 });
+        this.setState((state) => {
+          return { conservativeCount: state.conservativeCount - 1 };
+        });
       }
     }
   };
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <NewsfulContext.Provider value={this.state}>
           <Switch>
             <Route
               exact
-              path={"/"}
+              path={'/'}
               render={(props) => {
                 return <LoginForm {...props} setUserId={this.fetchData} />;
               }}
             />
-            <Route path="/registration" component={RegistrationForm} />
+            <Route path='/registration' component={RegistrationForm} />
             <Route
-              path={"/home"}
+              path={'/home'}
               render={() => {
                 return <MainPage />;
               }}
             />
-            <Route path="/saved-articles" component={SavedArticles} />
+            <Route path='/saved-articles' component={SavedArticles} />
           </Switch>
         </NewsfulContext.Provider>
       </div>

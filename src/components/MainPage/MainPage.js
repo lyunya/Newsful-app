@@ -50,7 +50,7 @@ const MainPage = () => {
           setIsError(true);
           console.error("error:", error);
         });
-      return function cleanup() {
+      return () => {
         abortController.abort();
       };
   }, []);
