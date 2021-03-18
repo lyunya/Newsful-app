@@ -42,7 +42,6 @@ const Article = ({ article }) => {
       .catch((error) => {
         setIsError(error);
       });
-    contextValue.countUpSavedArticles(article);
   };
 
   const deleteSavedArticle = (article) => {
@@ -53,7 +52,6 @@ const Article = ({ article }) => {
       }
     });
 
-    contextValue.countDownSavedArticles(article);
     fetch(`${config.API_ENDPOINT}/saved-articles/${articleId}`, {
       method: "DELETE",
       headers: {

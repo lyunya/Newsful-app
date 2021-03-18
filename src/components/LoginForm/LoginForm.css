@@ -48,7 +48,7 @@ button {
   border-radius: 0.2em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: #000000;
   background-color: white;
@@ -62,8 +62,11 @@ button:hover {
 }
 
 @media screen and (min-width: 768px) {
-  .loginWrapper{
+  .loginWrapper {
     background-image: url(../../images/Red-Blue-1440x900.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
   }
   .Intro {
     width: 650px;

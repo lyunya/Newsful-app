@@ -2,10 +2,6 @@
     text-align: center;
 }
 
-.liberal-bar{
-  color: blue;
-}
-
 .spinner:not([hidden]) {
   position: fixed;
   top: 0;
@@ -35,4 +31,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.loading-message {
+  text-align: center;
 }

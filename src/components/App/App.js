@@ -23,12 +23,7 @@ class App extends React.Component {
       savedArticles: [],
       saveArticle: this.saveArticle,
       deleteSave: this.deleteSave,
-      countUpSavedArticles: this.countUpSavedArticles,
-      countDownSavedArticles: this.countDownSavedArticles,
       user_id: this.user_id,
-      liberalCount: 0,
-      neutralCount: 0,
-      conservativeCount: 0,
       error: null,
     };
   }
@@ -40,37 +35,7 @@ class App extends React.Component {
     }
   }
 
-  countSavedArticles = () => {
-    this.state.savedArticles.forEach((article) => {
-      if (
-        /msnbc/.test(article.url) ||
-        /huffpost/.test(article.url) ||
-        /cnn/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { liberalCount: state.liberalCount + 1 };
-        });
-      }
-      if (
-        /reuters/.test(article.url) ||
-        /npr/.test(article.url) ||
-        /bbc/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { neutralCount: state.neutralCount + 1 };
-        });
-      }
-      if (
-        /foxnews/.test(article.url) ||
-        /breitbart/.test(article.url) ||
-        /nationalreview/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { conservativeCount: state.conservativeCount + 1 };
-        });
-      }
-    });
-  };
+  
   fetchData = (user_id) => {
     this.setState({
       user_id: parseInt(user_id),
@@ -83,7 +48,6 @@ class App extends React.Component {
             (article) => article.user_id.toString() === user_id.toString()
           ),
         });
-        this.countSavedArticles();
       })
       .catch((res) => {
         this.setState({ error: res.error });
@@ -109,77 +73,6 @@ class App extends React.Component {
     this.setState({ savedArticles: newSavedArticles });
   };
 
-  countUpSavedArticles = (article) => {
-    const index = this.state.savedArticles.findIndex(
-      (item) => item.id === article.id
-    );
-    if (index === -1) {
-      console.log(index);
-      if (
-        /msnbc/.test(article.url) ||
-        /huffpost/.test(article.url) ||
-        /cnn/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { liberalCount: state.liberalCount + 1 };
-        });
-      }
-      if (
-        /reuters/.test(article.url) ||
-        /npr/.test(article.url) ||
-        /bbc/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { neutralCount: state.neutralCount + 1 };
-        });
-      }
-      if (
-        /foxnews/.test(article.url) ||
-        /breitbart/.test(article.url) ||
-        /nationalreview/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { conservativeCount: state.conservativeCount + 1 };
-        });
-      }
-    }
-  };
-
-  countDownSavedArticles = (article) => {
-    const exist = this.state.savedArticles.find((item) => {
-      return item.id === article.id;
-    });
-    if (exist) {
-      if (
-        /msnbc/.test(article.url) ||
-        /huffpost/.test(article.url) ||
-        /cnn/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { liberalCount: state.liberalCount - 1 };
-        });
-      }
-      if (
-        /reuters/.test(article.url) ||
-        /npr/.test(article.url) ||
-        /bbc/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { neutralCount: state.neutralCount - 1 };
-        });
-      }
-      if (
-        /foxnews/.test(article.url) ||
-        /breitbart/.test(article.url) ||
-        /nationalreview/.test(article.url)
-      ) {
-        this.setState((state) => {
-          return { conservativeCount: state.conservativeCount - 1 };
-        });
-      }
-    }
-  };
-
   render() {
     return (
       <div className='App'>
@@ -193,12 +86,7 @@ class App extends React.Component {
               }}
             />
             <Route path='/registration' component={RegistrationForm} />
-            <Route
-              path={'/home'}
-              render={() => {
-                return <MainPage />;
-              }}
-            />
+            <Route path={'/home'} component={MainPage} />
             <Route path='/saved-articles' component={SavedArticles} />
           </Switch>
         </NewsfulContext.Provider>

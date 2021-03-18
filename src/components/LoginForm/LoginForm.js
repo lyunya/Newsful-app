@@ -104,8 +104,6 @@ export default class LoginForm extends Component {
         </Formik>
         {error ? <p>{error}</p> : null}
         <p>test account - email: demo@demo.com & password: T@pwater1</p>
-        <br />
-        <p>Are you a new user? Create an account</p>
         <Link
           to={"/registration"}
           style={{ textDecoration: "none" }}

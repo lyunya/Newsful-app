@@ -24,7 +24,7 @@ const MainPage = () => {
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-
+  
     const abortController = new AbortController();
     const signal = abortController.signal;
 
@@ -123,7 +123,10 @@ const MainPage = () => {
       <SearchBar search={search} />
       {isError && <div>Something went wrong...</div>}
       {isLoading ? (
+        <>
         <div className="spinner"></div>
+        <p className="loading-message">Grabbing today's news from all over the world...</p>
+        </>
       ) : (
         <Fragment>
           <ArticleBar
