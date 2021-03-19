@@ -31,59 +31,58 @@
 .bias-heading {
   clear: both;
   margin-bottom: 0px;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   padding-left: 1%;
   /* color: black; */
   font-size: 1.6rem;
 }
 
-.article-bar{
+.article-bar {
   padding-bottom: 2%;
 }
 
-.articlebar-header{
+.articlebar-header {
   display: flex;
   flex-flow: row wrap;
   position: relative;
-  
 }
-.arrows{
+.arrows {
   position: absolute;
   bottom: 0;
   right: 2%;
 }
 
-.left-paddle{
+.left-paddle {
   float: left;
 }
-.right-paddle{
+.right-paddle {
   float: right;
 }
 
-.left-paddle-dark{
+.left-paddle-dark {
   float: left;
   color: #ffffff;
 }
-.right-paddle-dark{
+.right-paddle-dark {
   float: right;
   color: #ffffff;
 }
 
-.error-message{
+.error-message {
   padding-left: 1%;
 }
 .hidden {
-	display: none;
+  display: none;
 }
 
-.bias-heading.liberal{
+.bias-heading.liberal {
   color: #175ab8;
 }
 
-.bias-heading.conservative{
-  color: #BF0D3E;
+.bias-heading.conservative {
+  color: #bf0d3e;
 }
 
-.bias-heading.neutral{
+.bias-heading.neutral {
   color: #030303;
 }

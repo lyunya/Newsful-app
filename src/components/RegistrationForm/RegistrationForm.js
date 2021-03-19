@@ -33,8 +33,8 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <div className="registration-wrapper">
-        <div className="Intro">
+      <div className='registration-wrapper'>
+        <div className='Intro'>
           <h1>Newsful</h1>
         </div>
         <Formik
@@ -44,43 +44,43 @@ const RegistrationForm = () => {
         >
           {({ touched, errors, isSubmitting }) => (
             <Form>
-              <div className="form-group">
-                <label htmlFor="email" />
+              <div className='form-group'>
+                <label htmlFor='email' />
                 <Field
-                  type="email"
-                  name="email"
-                  aria-label="Enter email address"
-                  placeholder="Email"
+                  type='email'
+                  name='email'
+                  aria-label='Enter email address'
+                  placeholder='Email'
                   className={`form-control ${
                     touched.email && errors.email ? 'is-invalid' : ''
                   }`}
                 />
                 <ErrorMessage
-                  component="div"
-                  name="email"
-                  className="invalid-feedback"
+                  component='div'
+                  name='email'
+                  className='invalid-feedback'
                 />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="password" />
+              <div className='form-group'>
+                <label htmlFor='password' />
                 <Field
-                  type="password"
-                  name="password"
-                  aria-label="Enter password"
-                  placeholder="Password"
+                  type='password'
+                  name='password'
+                  aria-label='Enter password'
+                  placeholder='Password'
                   className={`form-control ${
                     touched.password && errors.password ? 'is-invalid' : ''
                   }`}
                 />
                 <ErrorMessage
-                  component="div"
-                  name="password"
-                  className="invalid-feedback"
+                  component='div'
+                  name='password'
+                  className='invalid-feedback'
                 />
               </div>
 
-              <button type="submit" className="create-btn">
+              <button type='submit' className='create-btn'>
                 Create an Account
               </button>
             </Form>
@@ -90,7 +90,7 @@ const RegistrationForm = () => {
         <p>After creating an account, please log in with your credentials</p>
         <p>
           Already a user?{' '}
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to='/' style={{ textDecoration: 'none' }}>
             <button>Log in</button>
           </Link>
         </p>

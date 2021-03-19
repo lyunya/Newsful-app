@@ -76,10 +76,9 @@ const Article = ({ article }) => {
   };
 
   // this determines which bookmark icon to show if saved or not
-  const checkSaved = (article) => 
+  const checkSaved = (article) =>
     savedArticles.find((a) => a.url === article.url);
-  
-    
+
   const articleClasses = darkMode ? ['article-dark-mode'] : ['article'];
 
   const style = () => {
@@ -95,36 +94,42 @@ const Article = ({ article }) => {
   };
 
   return (
-    <div className="articles">
+    <div className='articles'>
       <div className='article-item'>
         {style()}
         <div className={articleClasses.join(' ')}>
-          <a href={article.url} target="_blank" rel="noopener noreferrer">
+          <a href={article.url} target='_blank' rel='noopener noreferrer'>
             <img
-              className="article-image"
-              alt="article"
+              className='article-image'
+              alt='article'
               src={article.image}
               onError={(e) => (e.target.style.display = 'none')}
             />
           </a>
-          <div className="article-content">
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              <div className={darkMode ? "article_headline-dark" : "article_headline"}>{article.title}</div>
+          <div className='article-content'>
+            <a href={article.url} target='_blank' rel='noopener noreferrer'>
+              <div
+                className={
+                  darkMode ? 'article_headline-dark' : 'article_headline'
+                }
+              >
+                {article.title}
+              </div>
             </a>
 
             {checkSaved(article) ? (
               <FontAwesomeIcon
                 icon={['fas', 'bookmark']}
-                className="bookmark"
-                title="remove bookmark"
+                className='bookmark'
+                title='remove bookmark'
                 onClick={() => deleteSavedArticle(article)}
                 size={isMobile ? 'lg' : '1x'}
               />
             ) : (
               <FontAwesomeIcon
                 icon={['far', 'bookmark']}
-                className="bookmark"
-                title="bookmark"
+                className='bookmark'
+                title='bookmark'
                 onClick={() => setSavedArticle(article)}
                 size={isMobile ? 'lg' : '1x'}
               />

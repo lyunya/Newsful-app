@@ -25,7 +25,6 @@
   scroll-snap-stop: always;
 }
 
-
 .article {
   background-color: white;
   border-radius: 0.25rem;
@@ -51,12 +50,12 @@
   box-shadow: inset 0 20px 40px -8px rgba(255, 0, 0, 0.6);
 }
 
-
 .article-content {
   padding: 1rem;
 }
 
-.article_headline, .article_headline-dark {
+.article_headline,
+.article_headline-dark {
   font-size: 12px;
   font-weight: bold;
   font-family: 'Open Sans';

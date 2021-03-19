@@ -1,11 +1,19 @@
 .saved-articles {
-    text-align: center;
-    height: 100vh;
+  text-align: center;
+  background-color: #dee4e7;
+  height: 100vh;
+}
+
+.saved-articles-dark {
+  background-color: #364953;
+  height: 100vh;
+  text-align: center;
 }
 
 .main {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+
 }

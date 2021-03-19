@@ -6,14 +6,14 @@ import { NewsfulContext } from '../App';
 import './SavedArticles.css';
 
 const SavedArticles = () => {
-  const { savedArticles } = useContext(NewsfulContext);
+  const { savedArticles, darkMode } = useContext(NewsfulContext);
 
   return (
     <>
       <Nav />
-      <div className="saved-articles">
+      <div className={darkMode ? 'saved-articles-dark' : 'saved-articles'}>
         <h1>Saved Articles</h1>
-        <main className="main">
+        <main className='main'>
           {savedArticles.map((article, index) => (
             <Article article={article} key={index} />
           ))}

@@ -9,8 +9,8 @@ it('renders without crashing', () => {
   ReactDOM.render(
     <NewsfulContext.Provider value={{ savedArticles: [] }}>
       <BrowserRouter>
-      <Header />
-    </BrowserRouter>
+        <Header />
+      </BrowserRouter>
     </NewsfulContext.Provider>,
     div
   );

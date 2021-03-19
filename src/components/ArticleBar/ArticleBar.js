@@ -6,9 +6,7 @@ import useDeviceDetect from '../../useDeviceDetect';
 import './ArticleBar.css';
 
 const ArticleBar = ({ data, heading }) => {
-   const { darkMode } = useContext(
-     NewsfulContext
-   );
+  const { darkMode } = useContext(NewsfulContext);
   const scrollWrapperRef = useRef();
   const { isMobile } = useDeviceDetect();
 
@@ -37,10 +35,7 @@ const ArticleBar = ({ data, heading }) => {
         {scrollMobile}
         {!isMobile ? (
           <div className='arrows'>
-            <div
-              className='left-paddle'
-              onClick={() => scroll(-200)}
-            >
+            <div className='left-paddle' onClick={() => scroll(-200)}>
               <svg
                 width='24'
                 height='24'
@@ -57,10 +52,7 @@ const ArticleBar = ({ data, heading }) => {
                 <line x1='5' y1='12' x2='9' y2='8' />
               </svg>
             </div>
-            <div
-              className='right-paddle'
-              onClick={() => scroll(200)}
-            >
+            <div className='right-paddle' onClick={() => scroll(200)}>
               <svg
                 width='32'
                 height='32'

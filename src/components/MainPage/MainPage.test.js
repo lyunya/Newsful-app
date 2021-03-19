@@ -8,9 +8,9 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <NewsfulContext.Provider value={{ savedArticles: [] }}>
-       <BrowserRouter>
-      <MainPage />
-    </BrowserRouter>
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
     </NewsfulContext.Provider>,
     div
   );

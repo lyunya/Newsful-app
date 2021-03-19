@@ -29,7 +29,7 @@ class App extends React.Component {
       user_id: this.user_id,
       error: null,
       darkMode: false,
-      toggleDarkMode: this.toggleDarkMode
+      toggleDarkMode: this.toggleDarkMode,
     };
   }
 
@@ -79,15 +79,15 @@ class App extends React.Component {
   };
 
   getMode = () => {
-    const savedMode = JSON.parse(localStorage.getItem('dark'))
-    this.setState({ darkMode: savedMode || false })
-  }
+    const savedMode = JSON.parse(localStorage.getItem('dark'));
+    this.setState({ darkMode: savedMode || false });
+  };
 
   toggleDarkMode = () => {
     this.setState({ darkMode: !this.state.darkMode });
-    const currMode = (this.state.darkMode).toString();
+    const currMode = this.state.darkMode.toString();
     localStorage.setItem('dark', currMode);
-  }
+  };
 
   render() {
     return (
@@ -96,14 +96,14 @@ class App extends React.Component {
           <Switch>
             <Route
               exact
-              path="/"
+              path='/'
               render={(props) => (
                 <LoginForm {...props} setUserId={this.fetchData} />
               )}
             />
-            <Route path="/registration" component={RegistrationForm} />
-            <Route path="/home" component={MainPage} />
-            <Route path="/saved-articles" component={SavedArticles} />
+            <Route path='/registration' component={RegistrationForm} />
+            <Route path='/home' component={MainPage} />
+            <Route path='/saved-articles' component={SavedArticles} />
           </Switch>
         </NewsfulContext.Provider>
       </div>

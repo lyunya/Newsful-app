@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Nav from '../Navigation/Header';
 import SearchBar from '../SearchBar/SearchBar';
 import ArticleBar from '../ArticleBar/ArticleBar';
@@ -10,12 +10,14 @@ import {
   neutral_search_news_api,
   liberal_search_news_api,
 } from '../../newsful-helpers';
+import { NewsfulContext } from '../App';
 import './MainPage.css';
 
 const MainPage = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const { darkMode } = useContext(NewsfulContext);
 
   // makes 3 seperate fetch calls to ensure enough results for each category
   // liberal, conservative, neutral
@@ -110,32 +112,32 @@ const MainPage = () => {
   return (
     <>
       <Nav />
-      <div className="main-page">
-        <h1 className="App-title">Newsful</h1>
+      <div className={darkMode ? 'main-page-dark' : 'main-page'}>
+        <h1 className='App-title'>Newsful</h1>
         <SearchBar search={search} />
         {isError && <div>Something went wrong...</div>}
         {isLoading ? (
           <>
-            <div className="spinner" />
-            <p className="loading-message">
+            <div className='spinner' />
+            <p className='loading-message'>
               Grabbing news from all over the world...
             </p>
           </>
         ) : (
           <>
             <ArticleBar
-              className="liberal-bar"
-              heading="Liberal"
+              className='liberal-bar'
+              heading='Liberal'
               data={news.liberal}
             />
             <ArticleBar
-              className="conservative-bar"
-              heading="Conservative"
+              className='conservative-bar'
+              heading='Conservative'
               data={news.conservative}
             />
             <ArticleBar
-              className="neutral-bar"
-              heading="Neutral"
+              className='neutral-bar'
+              heading='Neutral'
               data={news.neutral}
             />
           </>

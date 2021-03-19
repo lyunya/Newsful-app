@@ -1,8 +1,13 @@
-.App-title{
-    text-align: center;
+.App-title {
+  text-align: center;
 }
 
-.main-page{
+.main-page {
+  background-color: #dee4e7;
+  height: 100vh;
+}
+.main-page-dark {
+  background-color: #364953;
   height: 100vh;
 }
 
@@ -18,14 +23,14 @@
 }
 
 .spinner::after {
-  content: "";
+  content: '';
   width: 80px;
   height: 80px;
   border: 2px solid #f3f3f3;
   border-top: 3px solid #f25a41;
   border-radius: 100%;
   will-change: transform;
-  animation: spin 1s infinite linear
+  animation: spin 1s infinite linear;
 }
 
 @keyframes spin {
