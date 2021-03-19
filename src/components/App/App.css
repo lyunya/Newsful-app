@@ -1,11 +1,9 @@
 .app {
   background-color: #dee4e7;
-  height: 100vh;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .app-dark-mode {
   background-color: #364953;
-  height: 100vh;
-  min-height: 100vh;
+  height: 100%;
 }
