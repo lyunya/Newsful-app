@@ -7,7 +7,9 @@ import useDeviceDetect from '../../useDeviceDetect';
 import config from '../../config';
 
 const Article = ({ article }) => {
-  const contextValue = useContext(NewsfulContext);
+  const { user_id, saveArticle, savedArticles, darkMode } = useContext(
+    NewsfulContext
+  );
   const [isError, setIsError] = useState(false);
   const { isMobile } = useDeviceDetect();
 
@@ -16,7 +18,7 @@ const Article = ({ article }) => {
       title: article.title,
       url: article.url,
       image: article.image,
-      user_id: contextValue.user_id,
+      user_id: user_id,
     };
     fetch(`${config.API_ENDPOINT}/saved-articles`, {
       method: 'POST',
@@ -36,7 +38,7 @@ const Article = ({ article }) => {
         return res.json();
       })
       .then((data) => {
-        contextValue.saveArticle(data);
+        saveArticle(data);
         checkSaved(article);
       })
       .catch((error) => {
@@ -46,7 +48,7 @@ const Article = ({ article }) => {
 
   const deleteSavedArticle = (article) => {
     let articleId;
-    contextValue.savedArticles.forEach((savedArticle) => {
+    savedArticles.forEach((savedArticle) => {
       if (savedArticle.url === article.url) {
         articleId = savedArticle.id;
       }
@@ -65,7 +67,7 @@ const Article = ({ article }) => {
         }
       })
       .then(() => {
-        contextValue.deleteSave(article);
+        deleteSave(article);
         checkSaved(article);
       })
       .catch((error) => {
@@ -74,9 +76,11 @@ const Article = ({ article }) => {
   };
 
   // this determines which bookmark icon to show if saved or not
-  const checkSaved = (article) =>
-    contextValue.savedArticles.find((a) => a.url === article.url);
-  const articleClasses = ['article'];
+  const checkSaved = (article) => 
+    savedArticles.find((a) => a.url === article.url);
+  
+    
+  const articleClasses = darkMode ? ['article-dark-mode'] : ['article'];
 
   const style = () => {
     /msnbc.com/.test(article.url) ||
@@ -92,7 +96,7 @@ const Article = ({ article }) => {
 
   return (
     <div className="articles">
-      <div className="article-item">
+      <div className='article-item'>
         {style()}
         <div className={articleClasses.join(' ')}>
           <a href={article.url} target="_blank" rel="noopener noreferrer">
@@ -105,7 +109,7 @@ const Article = ({ article }) => {
           </a>
           <div className="article-content">
             <a href={article.url} target="_blank" rel="noopener noreferrer">
-              <div className="article_headline">{article.title}</div>
+              <div className={darkMode ? "article_headline-dark" : "article_headline"}>{article.title}</div>
             </a>
 
             {checkSaved(article) ? (

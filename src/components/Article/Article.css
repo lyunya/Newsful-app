@@ -25,12 +25,21 @@
   scroll-snap-stop: always;
 }
 
+
 .article {
   background-color: white;
   border-radius: 0.25rem;
   box-shadow: inset 0 20px 40px -14px rgba(53, 53, 53, 0.6);
   text-decoration: none;
   color: black;
+  overflow: hidden;
+}
+.article-dark-mode {
+  background-color: #1b282f;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 20px 40px -14px rgba(53, 53, 53, 0.6);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
   overflow: hidden;
 }
 
@@ -42,15 +51,20 @@
   box-shadow: inset 0 20px 40px -8px rgba(255, 0, 0, 0.6);
 }
 
+
 .article-content {
   padding: 1rem;
 }
 
-.article_headline {
+.article_headline, .article_headline-dark {
   font-size: 12px;
   font-weight: bold;
   font-family: 'Open Sans';
   color: black;
+}
+
+.article_headline-dark {
+  color: wheat;
 }
 
 .bookmark {

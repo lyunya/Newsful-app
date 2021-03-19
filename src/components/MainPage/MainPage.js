@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from '../Navigation/Header';
 import SearchBar from '../SearchBar/SearchBar';
 import ArticleBar from '../ArticleBar/ArticleBar';
@@ -118,7 +118,7 @@ const MainPage = () => {
           <>
             <div className="spinner" />
             <p className="loading-message">
-              Grabbing today's news from all over the world...
+              Grabbing news from all over the world...
             </p>
           </>
         ) : (

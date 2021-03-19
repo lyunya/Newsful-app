@@ -6,7 +6,6 @@ import {
   faSearch as fasSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as farBookmark } from '@fortawesome/free-regular-svg-icons';
-
 import './App.css';
 import MainPage from '../MainPage/MainPage';
 import LoginForm from '../LoginForm/LoginForm';
@@ -29,10 +28,13 @@ class App extends React.Component {
       deleteSave: this.deleteSave,
       user_id: this.user_id,
       error: null,
+      darkMode: false,
+      toggleDarkMode: this.toggleDarkMode
     };
   }
 
   componentDidMount() {
+    this.getMode();
     const token = TokenService.hasAuthToken();
     if (token) {
       this.fetchData(localStorage.getItem('userId'));
@@ -76,9 +78,20 @@ class App extends React.Component {
     this.setState({ savedArticles: newSavedArticles });
   };
 
+  getMode = () => {
+    const savedMode = JSON.parse(localStorage.getItem('dark'))
+    this.setState({ darkMode: savedMode || false })
+  }
+
+  toggleDarkMode = () => {
+    this.setState({ darkMode: !this.state.darkMode });
+    const currMode = (this.state.darkMode).toString();
+    localStorage.setItem('dark', currMode);
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className={this.state.darkMode ? 'app-dark-mode' : 'app'}>
         <NewsfulContext.Provider value={this.state}>
           <Switch>
             <Route
