@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.main-page{
+  height: 100vh;
+}
+
 .spinner:not([hidden]) {
   position: fixed;
   top: 0;
