@@ -2,11 +2,14 @@
   text-align: center;
   background-color: #dee4e7;
   height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .saved-articles-dark {
   background-color: #364953;
   height: 100vh;
+  min-height: 100vh;
   text-align: center;
 }
 
@@ -15,5 +18,4 @@
   flex-flow: wrap;
   align-items: center;
   justify-content: center;
-
 }

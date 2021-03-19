@@ -59,15 +59,6 @@
   float: right;
 }
 
-.left-paddle-dark {
-  float: left;
-  color: #ffffff;
-}
-.right-paddle-dark {
-  float: right;
-  color: #ffffff;
-}
-
 .error-message {
   padding-left: 1%;
 }
