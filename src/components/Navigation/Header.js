@@ -46,11 +46,11 @@ const Header = () => {
           <div className='dark-mode-toggle'>
             {darkMode ? (
               <span role='img' aria-label='moon' onClick={toggleDarkMode}>
-                🌚
+                🌞
               </span>
             ) : (
               <span role='img' aria-label='sun' onClick={toggleDarkMode}>
-                🌞
+                🌚
               </span>
             )}
           </div>

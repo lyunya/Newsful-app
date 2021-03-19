@@ -7,7 +7,7 @@ import useDeviceDetect from '../../useDeviceDetect';
 import config from '../../config';
 
 const Article = ({ article }) => {
-  const { user_id, saveArticle, savedArticles, darkMode } = useContext(
+  const { user_id, saveArticle, savedArticles, darkMode, deleteSave } = useContext(
     NewsfulContext
   );
   const [isError, setIsError] = useState(false);
