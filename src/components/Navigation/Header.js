@@ -1,31 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import TokenService from "../../services/token-service";
-import "./Header.css";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
+import TokenService from '../../services/token-service';
+import './Header.css';
 
 const Header = () => {
-
-    const handleLogoutClick = () => {
+  const handleLogoutClick = () => {
     TokenService.clearAuthToken();
   };
 
-  const renderLogoutLink = () => {
-    return (
-        <Link onClick={handleLogoutClick} to="/" className="Header-link">
-          Log out
-        </Link>
+  const renderLogoutLink = () => (
+    <Link onClick={handleLogoutClick} to="/" className="Header-link">
+      Log out
+    </Link>
+  );
 
-    );
-  }
-
-  const renderLoginLink = () => {
-    return (
-        <Link to="/" className="Header-link">
-          Log in
-        </Link>
-    );
-  }
-
+  const renderLoginLink = () => (
+    <Link to="/" className="Header-link">
+      Log in
+    </Link>
+  );
 
   return (
     <div className="header">

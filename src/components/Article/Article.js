@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Article.css";
-import { NewsfulContext } from "../App";
-import TokenService from "../../services/token-service";
-import useDeviceDetect from "../../useDeviceDetect";
-import config from "../../config";
+import React, { useContext, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Article.css';
+import { NewsfulContext } from '../App';
+import TokenService from '../../services/token-service';
+import useDeviceDetect from '../../useDeviceDetect';
+import config from '../../config';
 
 const Article = ({ article }) => {
   const contextValue = useContext(NewsfulContext);
@@ -19,10 +19,10 @@ const Article = ({ article }) => {
       user_id: contextValue.user_id,
     };
     fetch(`${config.API_ENDPOINT}/saved-articles`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(savedArticle),
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -53,9 +53,9 @@ const Article = ({ article }) => {
     });
 
     fetch(`${config.API_ENDPOINT}/saved-articles/${articleId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "content-Type": "application/json",
+        'content-Type': 'application/json',
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -73,35 +73,34 @@ const Article = ({ article }) => {
       });
   };
 
-  //this determines which bookmark icon to show if saved or not
-  const checkSaved = (article) => {
-    return contextValue.savedArticles.find((a) => a.url === article.url);
-  };
-  const articleClasses = ["article"];
+  // this determines which bookmark icon to show if saved or not
+  const checkSaved = (article) =>
+    contextValue.savedArticles.find((a) => a.url === article.url);
+  const articleClasses = ['article'];
 
   const style = () => {
     /msnbc.com/.test(article.url) ||
     /huffpost.com/.test(article.url) ||
     /cnn.com/.test(article.url)
-      ? articleClasses.push("liberal")
+      ? articleClasses.push('liberal')
       : /foxnews.com/.test(article.url) ||
         /breitbart.com/.test(article.url) ||
         /nationalreview.com/.test(article.url)
-      ? articleClasses.push("conservative")
-      : articleClasses.push("neutral");
+      ? articleClasses.push('conservative')
+      : articleClasses.push('neutral');
   };
 
   return (
     <div className="articles">
       <div className="article-item">
         {style()}
-        <div className={articleClasses.join(" ")}>
+        <div className={articleClasses.join(' ')}>
           <a href={article.url} target="_blank" rel="noopener noreferrer">
             <img
               className="article-image"
-              alt={"article"}
+              alt="article"
               src={article.image}
-              onError={(e) => (e.target.style.display = "none")}
+              onError={(e) => (e.target.style.display = 'none')}
             />
           </a>
           <div className="article-content">
@@ -111,19 +110,19 @@ const Article = ({ article }) => {
 
             {checkSaved(article) ? (
               <FontAwesomeIcon
-                icon={["fas", "bookmark"]}
+                icon={['fas', 'bookmark']}
                 className="bookmark"
                 title="remove bookmark"
                 onClick={() => deleteSavedArticle(article)}
-                size={isMobile ? "lg" : "1x"}
+                size={isMobile ? 'lg' : '1x'}
               />
             ) : (
               <FontAwesomeIcon
-                icon={["far", "bookmark"]}
+                icon={['far', 'bookmark']}
                 className="bookmark"
                 title="bookmark"
                 onClick={() => setSavedArticle(article)}
-                size={isMobile ? "lg" : "1x"}
+                size={isMobile ? 'lg' : '1x'}
               />
             )}
           </div>

@@ -1,8 +1,10 @@
-.saved-articles{
+.saved-articles {
     text-align: center;
 }
 
-.main{
+
+
+.main {
     display: flex;
     flex-flow: wrap;
     align-items: center;

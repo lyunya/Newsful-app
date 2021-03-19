@@ -1,1 +1,1 @@
-export { default, NewsfulContext } from './App.js'
+export { default, NewsfulContext } from './App.js';

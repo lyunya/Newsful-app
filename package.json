@@ -49,6 +49,6 @@
     ]
   },
   "devDependencies": {
-    "react-axe": "^3.5.3"
+    "prettier": "^2.1.1"
   }
 }

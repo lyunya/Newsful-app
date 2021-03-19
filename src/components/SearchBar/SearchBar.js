@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import "./SearchBar.css"
+import React, { useState } from 'react';
+import './SearchBar.css';
 
 const SearchBar = (props) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const handleSearchInputChanges = (e) => {
     setSearchValue(e.target.value);
   };
 
   const resetInputField = () => {
-    setSearchValue("");
+    setSearchValue('');
   };
 
   const callSearchFunction = (e) => {
@@ -19,22 +19,22 @@ const SearchBar = (props) => {
   };
 
   return (
-    <form className="search" role='search' onSubmit={callSearchFunction}>
-        <input
-          value={searchValue}
-          onChange={handleSearchInputChanges}
-          placeholder={"Search for articles"}
-          type="search"
-          aria-label="search news"
-          className="search-bar"
-          required
-        />
-        <input
-          className="search-button"
-          aria-label="submit search button"
-          type="submit"
-          value="SEARCH"
-        />
+    <form className="search" role="search" onSubmit={callSearchFunction}>
+      <input
+        value={searchValue}
+        onChange={handleSearchInputChanges}
+        placeholder="Search for articles"
+        type="search"
+        aria-label="search news"
+        className="search-bar"
+        required
+      />
+      <input
+        className="search-button"
+        aria-label="submit search button"
+        type="submit"
+        value="SEARCH"
+      />
     </form>
   );
 };

@@ -1,10 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import Header from "./Header";
+import React, { useContext } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
+import Header from './Header';
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
       <Header />

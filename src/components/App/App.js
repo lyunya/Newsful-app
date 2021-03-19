@@ -1,9 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBookmark as fasBookmark } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBookmark as fasBookmark,
+  faSearch as fasSearch,
+} from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as farBookmark } from '@fortawesome/free-regular-svg-icons';
-import { faSearch as fasSearch } from '@fortawesome/free-solid-svg-icons';
+
 import './App.css';
 import MainPage from '../MainPage/MainPage';
 import LoginForm from '../LoginForm/LoginForm';
@@ -11,6 +14,7 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import SavedArticles from '../SavedArticles/SavedArticles';
 import TokenService from '../../services/token-service';
 import Config from '../../config';
+
 const API = Config.API_ENDPOINT;
 library.add(fasBookmark, farBookmark, fasSearch);
 
@@ -35,7 +39,6 @@ class App extends React.Component {
     }
   }
 
-  
   fetchData = (user_id) => {
     this.setState({
       user_id: parseInt(user_id),
@@ -75,19 +78,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <NewsfulContext.Provider value={this.state}>
           <Switch>
             <Route
               exact
-              path={'/'}
-              render={(props) => {
-                return <LoginForm {...props} setUserId={this.fetchData} />;
-              }}
+              path="/"
+              render={(props) => (
+                <LoginForm {...props} setUserId={this.fetchData} />
+              )}
             />
-            <Route path='/registration' component={RegistrationForm} />
-            <Route path={'/home'} component={MainPage} />
-            <Route path='/saved-articles' component={SavedArticles} />
+            <Route path="/registration" component={RegistrationForm} />
+            <Route path="/home" component={MainPage} />
+            <Route path="/saved-articles" component={SavedArticles} />
           </Switch>
         </NewsfulContext.Provider>
       </div>
