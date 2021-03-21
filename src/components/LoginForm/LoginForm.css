@@ -40,10 +40,17 @@
   padding-bottom: 2%;
 }
 
+.form-control {
+  font-size: 16px;
+  padding: 0.2em 1em;
+  margin: 0 0.2em 0.2em 0;
+  border-radius: 2em;
+}
+
 .signin-btn {
   display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.3em 0.3em 0;
+  padding: 0.8em 1.8em;
+  margin: 0 0.8em 0.8em 0;
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;
@@ -55,13 +62,13 @@
   transition: all 0.2s;
 }
 .signin-btn:hover {
-  background-color: #034a74;
+  background-color:#034a74;
 }
 
 .register-btn {
   display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.3em 0.3em 0;
+  padding: 0.8em 1.8em;
+  margin: 0 0.8em 0.8em 0;
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;
@@ -74,7 +81,7 @@
 }
 
 .register-btn:hover {
-background-color: #d40303;
+  background-color: #034a74;
 }
 
 .test-account-details {
@@ -101,8 +108,8 @@ background-color: #d40303;
     padding-top: 5%;
   }
   .test-account-details {
-  font-size: 2vw;
-}
+    font-size: 2vw;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -128,22 +135,22 @@ background-color: #d40303;
     max-width: 40%;
     height: 100%;
   }
-   .test-account-details {
-  font-size: 1vw;
-}
+  .test-account-details {
+    font-size: 1vw;
+  }
 }
 
 @media (min-width: 1600px) {
   .article-logo {
     padding-top: 0%;
   }
-    .intro-lead {
+  .intro-lead {
     font-size: 1vw;
   }
   .intro-description {
-    font-size: .8vw;
+    font-size: 0.8vw;
   }
-     .test-account-details {
-  font-size: .8vw;
-}
+  .test-account-details {
+    font-size: 0.8vw;
+  }
 }

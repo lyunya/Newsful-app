@@ -9,14 +9,10 @@
 
 .main-page {
   background-color: #dee4e7;
-  height: 100vh;
-  min-height: 100vh;
   height: 100%;
 }
 .main-page-dark {
   background-color: #364953;
-  height: 100vh;
-  min-height: 100vh;
   height: 100%;
 }
 
@@ -53,4 +49,5 @@
 
 .loading-message {
   text-align: center;
+  font-size: 2vh;
 }

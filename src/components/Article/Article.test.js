@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { NewsfulContext } from '../App';
+import NewsfulContext from '../../context/NewsfulContext';
 import Article from './Article';
 
 it('renders without crashing', () => {

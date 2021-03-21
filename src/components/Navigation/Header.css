@@ -86,6 +86,10 @@ a {
   .nav-link{
     margin: 0 5px;
   }
+  .dark-mode-toggle {
+  margin-right: auto;
+  margin-left: 0%;
+}
 }
 
 @media (min-width: 1025px) {

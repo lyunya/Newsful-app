@@ -19,15 +19,22 @@ This application's functionality includes:
 https://newsful.vercel.app/
 
  Login Page
-![image of Login Page](https://i.ibb.co/y4KkYGN/Screenshot-2020-07-29-Newsful.png)
+![image of Login Page](https://i.ibb.co/zR7wxbd/Newsful-Signin.png)
+
+ Registration Page
+![image of Registration Page](https://i.ibb.co/GVLBtDd/Newsful-Registration.png)
 
 Home Page
-![image of Home Page](https://i.ibb.co/nrNvPWt/Newsful-app.png)
+![image of Home Page](https://i.ibb.co/bFh8Zwb/Newsful-Home.png)
 
 Saved Articles Page
-![image of Saved Articles Page](https://i.ibb.co/4FwMC5d/Screenshot-2020-07-29-Newsful-2.png)
+![image of Saved Articles Page](https://i.ibb.co/QY6PrNg/Newsful-Saved.png)
 
+Home Page Dark Mode
+![image of Home Page Dark Mode](https://i.ibb.co/2vybWjM/Newsful-Home-Dark.png)
 
+Saved Articles Dark Mode
+![image of Home Page Dark Mode](https://i.ibb.co/YPTv1cD/Newsful-Saved-Dark.png)
 
 ## Security
 Application uses JWT authentication
