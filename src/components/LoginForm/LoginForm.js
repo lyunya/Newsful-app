@@ -29,7 +29,6 @@ const LoginForm = (props) => {
     });
   };
 
-
   return (
     <div className='login-wrapper'>
       <div className='login-content'>
@@ -99,8 +98,7 @@ const LoginForm = (props) => {
               )}
             </Formik>
             <p className='test-account-details'>
-              Test Account <br /> Email: demo@demo.com <br /> Password:
-              T@pwater1
+              Test Account <br /> Email: demo@demo.com <br /> Password: password
             </p>
             <Link to='/registration' style={{ textDecoration: 'none' }}>
               <button className='register-btn'>Register</button>
