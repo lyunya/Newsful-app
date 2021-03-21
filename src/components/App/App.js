@@ -6,19 +6,16 @@ import {
   faSearch as fasSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as farBookmark } from '@fortawesome/free-regular-svg-icons';
-import './App.css';
 import MainPage from '../MainPage/MainPage';
 import LoginForm from '../LoginForm/LoginForm';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import SavedArticles from '../SavedArticles/SavedArticles';
 import TokenService from '../../services/token-service';
 import Config from '../../config';
-
+import { NewsfulProvider } from '../../context/NewsfulContext';
+import './App.css';
 const API = Config.API_ENDPOINT;
 library.add(fasBookmark, farBookmark, fasSearch);
-
-export const NewsfulContext = React.createContext();
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -92,7 +89,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={this.state.darkMode ? 'app-dark-mode' : 'app'}>
-        <NewsfulContext.Provider value={this.state}>
+        <NewsfulProvider value={this.state}>
           <Switch>
             <Route
               exact
@@ -105,7 +102,7 @@ class App extends React.Component {
             <Route path='/home' component={MainPage} />
             <Route path='/saved-articles' component={SavedArticles} />
           </Switch>
-        </NewsfulContext.Provider>
+        </NewsfulProvider>
       </div>
     );
   }

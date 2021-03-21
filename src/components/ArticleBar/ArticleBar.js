@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import scroller from '../../scroller.js';
 import Article from '../Article/Article';
-import { NewsfulContext } from '../App';
+import NewsfulContext from '../../context/NewsfulContext';
 import useDeviceDetect from '../../useDeviceDetect';
 import './ArticleBar.css';
 

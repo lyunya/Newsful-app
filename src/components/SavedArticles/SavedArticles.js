@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Article from '../Article/Article';
 import Nav from '../Navigation/Header';
-import { NewsfulContext } from '../App';
+import NewsfulContext from '../../context/NewsfulContext';
 
 import './SavedArticles.css';
 

@@ -1,74 +1,77 @@
-.loginWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  color: rgb(255, 255, 255);
-  text-shadow: 1px 1px #706060;
-  background-position: center;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
+
+.login-wrapper {
+  background-color: #dee4e7;
+  height: 100%;
+  min-height: 100vh;
   align-items: center;
   text-align: center;
-  background-image: url(../../images/Red-Blue-1125x2436.png);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+  vertical-align: middle;
 }
 
-.Intro {
-  width: 200px;
+.login-content {
+margin-left: 5%;
+margin-right: 5%;
 }
-.Intro h1 {
+
+.app-title-login {
   text-align: center;
-  font-size: 2.1em;
-}
-.Intro h2 {
-  font-size: 1.2em;
+  margin: 0%;
+  padding-top: 11%;
 }
 
-.Intro h3 {
-  font-size: 0.8em;
-}
-.loginImg {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
-.signin-btn {
-  margin-top: 5%;
+.article-logo {
+  height: 45%;
+  width: 50%;
+  margin: auto;
+  display: block;
+  padding-top: 5%;
 }
 
-button {
-  display: inline-block;
-  padding: 0.4em 1em;
-  border: 0.1em solid #000000;
-  border-radius: 0.2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: #000000;
-  background-color: white;
-  text-align: center;
-  transition: all 0.2s;
+.intro-lead {
+  font-weight: bold;
+}
+.form-group {
+  justify-content: center;
+  padding-bottom: 2%;
 }
 
-button:hover {
-  color: #ffffff;
-  background-color: #000000;
-}
 
-@media screen and (min-width: 768px) {
-  .loginWrapper {
-    background-image: url(../../images/Red-Blue-1440x900.png);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+/* ================================= 
+  Media Queries
+==================================== */
+@media (min-width: 769px) {
+  .app-title-login {
+    padding-top: 5%;
   }
-  .Intro {
-    width: 650px;
+  .article-logo {
+    width: 50%;
+    margin: auto;
+    display: block;
+    padding-top: 5%;
+  }
+}
+
+
+@media (min-width: 1025px) {
+  .app-title-login {
+    margin-bottom: 5%;
+  }
+  .intro {
+    float: left;
+    margin-left: 10%;
+    width: 30%;
+  }
+  .article-logo {
+    float: right;
+    vertical-align: middle;
+    width: 40%;
+    max-width: 40%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .article-logo {
+    padding-top: 0%;
   }
 }

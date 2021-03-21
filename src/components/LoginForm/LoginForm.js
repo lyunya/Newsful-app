@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import logo from '../../images/articles-image.svg'
 import AuthApiService from '../../services/auth-api-services';
 import TokenService from '../../services/token-service';
 import './LoginForm.css';
@@ -28,29 +29,33 @@ const LoginForm = (props) => {
     });
   };
 
-  //  const { error } = this.state;
+
   return (
-    <div className='loginWrapper'>
-      <div className='Intro'>
-        <h1>Welcome to Newsful</h1>
-        <p>
-          Whose views are in your news? <br />
+    <div className='login-wrapper'>
+      <div className='login-content'>
+    <h1 className='app-title-login'>Newsful</h1>
+    <img className='article-logo' src={logo} alt='article logo'/>
+    <div className='login'>
+      <div className='intro'>
+        <p className='intro-lead'>
+          Whose views are in your news? </p>
+          <p>
           Many news sources have a political agenda behind their reporting, but
           the Newsful app helps you identify the bias and expose you to a
           variety of sources.{' '}
         </p>
         <p>
           Read articles from all sides of the political spectrum and save news
-          stories to read later
+          stories to read later.
         </p>
-      </div>
+     
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={LoginSchema}
         onSubmit={(values) => handleSubmit(values)}
       >
         {({ touched, errors }) => (
-          <Form>
+          <Form className='form-group'>
             <div className='form-group'>
               <label htmlFor='email' />
               <Field
@@ -95,15 +100,19 @@ const LoginForm = (props) => {
           </Form>
         )}
       </Formik>
-
-      <p>test account - email: demo@demo.com & password: T@pwater1</p>
-      <Link
+      <p>Test Account <br /> Email: demo@demo.com <br /> Password: T@pwater1</p>
+      <div className='register-button'>
+    <Link
         to='/registration'
         style={{ textDecoration: 'none' }}
         className='registrationPageLink'
       >
         <button>Register</button>
       </Link>
+      </div>
+      </div>
+    </div>
+      </div>
     </div>
   );
 };

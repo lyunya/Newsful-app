@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { NewsfulContext } from '../App';
+import NewsfulContext from '../../context/NewsfulContext';
 
 import TokenService from '../../services/token-service';
 import './Header.css';
@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <div className={darkMode ? 'header-dark-mode' : 'header'}>
-      <div className='container'>
+      <div className='header-container'>
         <ul className='main-nav'>
           <li>
             <Link to='/home' className='nav-link'>

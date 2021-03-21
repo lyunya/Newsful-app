@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Article.css';
-import { NewsfulContext } from '../App';
+import NewsfulContext from '../../context/NewsfulContext';
 import TokenService from '../../services/token-service';
 import useDeviceDetect from '../../useDeviceDetect';
 import config from '../../config';

@@ -36,6 +36,7 @@ const RegistrationForm = () => {
       <div className='registration-wrapper'>
         <div className='Intro'>
           <h1>Newsful</h1>
+          <h2>rework in progress</h2>
         </div>
         <Formik
           initialValues={{ email: '', password: '' }}

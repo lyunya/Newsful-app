@@ -10,7 +10,7 @@ import {
   neutral_search_news_api,
   liberal_search_news_api,
 } from '../../newsful-helpers';
-import { NewsfulContext } from '../App';
+import NewsfulContext from '../../context/NewsfulContext';
 import './MainPage.css';
 
 const MainPage = () => {
@@ -113,7 +113,7 @@ const MainPage = () => {
     <>
       <Nav />
       <div className={darkMode ? 'main-page-dark' : 'main-page'}>
-        <h1 className='App-title'>Newsful</h1>
+        <h1 className='app-name'>Newsful</h1>
         <SearchBar search={search} />
         {isError && <div>Something went wrong...</div>}
         {isLoading ? (
