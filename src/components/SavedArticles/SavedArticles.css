@@ -11,6 +11,9 @@
   text-align: center;
   min-height: 100vh;
 }
+.saved-articles-name-dark{
+    color: aliceblue;
+}
 
 .main {
   display: flex;

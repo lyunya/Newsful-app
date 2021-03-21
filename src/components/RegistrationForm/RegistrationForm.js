@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import regLogo from '../../images/register-image.svg';
 import AuthApiService from '../../services/auth-api-services';
 import './RegistrationForm.css';
 
@@ -34,10 +35,12 @@ const RegistrationForm = () => {
   return (
     <>
       <div className='registration-wrapper'>
-        <div className='Intro'>
-          <h1>Newsful</h1>
-          <h2>rework in progress</h2>
-        </div>
+        <h1 className='app-name-registration'>Newsful</h1>
+        <img
+          className='registration-logo'
+          src={regLogo}
+          alt='registration logo'
+        />
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={RegistrationSchema}
@@ -88,13 +91,14 @@ const RegistrationForm = () => {
           )}
         </Formik>
         {error ? <p>{error}</p> : null}
-        <p>After creating an account, please log in with your credentials</p>
-        <p>
-          Already a user?{' '}
-          <Link to='/' style={{ textDecoration: 'none' }}>
-            <button>Log in</button>
-          </Link>
+        <p className='registration-details'>
+          After creating an account, please log in with your credentials 
+          <br />
+          Already a user?
         </p>
+        <Link to='/' style={{ textDecoration: 'none' }}>
+          <button className='signin-btn'>Log in</button>
+        </Link>
       </div>
     </>
   );

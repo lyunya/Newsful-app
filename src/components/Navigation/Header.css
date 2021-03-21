@@ -69,6 +69,9 @@ a {
 ==================================== */
 
 @media (min-width: 769px) {
+  .header-container{
+    padding: 20px 0;
+  }
   .header,
   .main-nav {
     display: flex;
@@ -79,11 +82,17 @@ a {
     align-items: center;
     margin: 0 auto;
   }
+  .nav-link{
+    margin: 0 5px;
+  }
 }
 
 @media (min-width: 1025px) {
   .header,
   .header-dark-mode {
     justify-content: space-between;
+  }
+    .nav-link{
+    margin: 0 30px;
   }
 }

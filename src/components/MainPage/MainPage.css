@@ -1,6 +1,11 @@
 .app-name {
   text-align: center;
 }
+.app-name-dark {
+  text-align: center;
+  color: aliceblue;
+}
+
 
 .main-page {
   background-color: #dee4e7;

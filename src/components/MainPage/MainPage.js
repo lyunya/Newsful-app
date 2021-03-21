@@ -113,7 +113,7 @@ const MainPage = () => {
     <>
       <Nav />
       <div className={darkMode ? 'main-page-dark' : 'main-page'}>
-        <h1 className='app-name'>Newsful</h1>
+        <h1 className={darkMode ? 'app-name-dark' : 'app-name'}>Newsful</h1>
         <SearchBar search={search} />
         {isError && <div>Something went wrong...</div>}
         {isLoading ? (

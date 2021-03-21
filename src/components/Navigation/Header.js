@@ -13,13 +13,13 @@ const Header = () => {
   };
 
   const renderLogoutLink = () => (
-    <Link onClick={handleLogoutClick} to='/' className='Header-link'>
+    <Link onClick={handleLogoutClick} to='/' className='nav-link'>
       Log out
     </Link>
   );
 
   const renderLoginLink = () => (
-    <Link to='/' className='Header-link'>
+    <Link to='/' className='nav-link'>
       Log in
     </Link>
   );

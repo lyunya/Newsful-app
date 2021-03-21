@@ -1,4 +1,3 @@
-
 .login-wrapper {
   background-color: #dee4e7;
   height: 100%;
@@ -9,12 +8,13 @@
 }
 
 .login-content {
-margin-left: 5%;
-margin-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .app-title-login {
   text-align: center;
+  font-size: 7vw;
   margin: 0%;
   padding-top: 11%;
 }
@@ -29,19 +29,70 @@ margin-right: 5%;
 
 .intro-lead {
   font-weight: bold;
+  font-size: 4vw;
 }
+.intro-description {
+  font-size: 2.4vw;
+}
+
 .form-group {
   justify-content: center;
   padding-bottom: 2%;
 }
 
+.signin-btn {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #1e7eb6;
+  text-align: center;
+  transition: all 0.2s;
+}
+.signin-btn:hover {
+  background-color: #034a74;
+}
 
+.register-btn {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #1e7eb6;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.register-btn:hover {
+background-color: #d40303;
+}
+
+.test-account-details {
+  font-size: 3vw;
+}
 /* ================================= 
   Media Queries
 ==================================== */
 @media (min-width: 769px) {
   .app-title-login {
-    padding-top: 5%;
+    padding-top: 10%;
+    font-size: 5vw;
+  }
+  .intro-lead {
+    font-size: 1.8vw;
+  }
+  .intro-description {
+    font-size: 1.6vw;
   }
   .article-logo {
     width: 50%;
@@ -49,17 +100,26 @@ margin-right: 5%;
     display: block;
     padding-top: 5%;
   }
+  .test-account-details {
+  font-size: 2vw;
 }
-
+}
 
 @media (min-width: 1025px) {
   .app-title-login {
     margin-bottom: 5%;
+    font-size: 4vw;
   }
   .intro {
     float: left;
     margin-left: 10%;
     width: 30%;
+  }
+  .intro-lead {
+    font-size: 1.4vw;
+  }
+  .intro-description {
+    font-size: 1.2vw;
   }
   .article-logo {
     float: right;
@@ -68,10 +128,22 @@ margin-right: 5%;
     max-width: 40%;
     height: 100%;
   }
+   .test-account-details {
+  font-size: 1vw;
+}
 }
 
 @media (min-width: 1600px) {
   .article-logo {
     padding-top: 0%;
   }
+    .intro-lead {
+    font-size: 1vw;
+  }
+  .intro-description {
+    font-size: .8vw;
+  }
+     .test-account-details {
+  font-size: .8vw;
+}
 }

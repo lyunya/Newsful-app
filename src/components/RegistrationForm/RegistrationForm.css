@@ -1,26 +1,103 @@
 .registration-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  color: rgb(255, 255, 255);
-  text-shadow: 1px 1px #706060;
-  background-position: center;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
+  background-color: #dee4e7;
+  height: 100%;
+  min-height: 100vh;
   align-items: center;
   text-align: center;
-  background-image: url(../../images/Red-Blue-1125x2436.png);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+  vertical-align: middle;
+}
+
+.app-name-registration {
+  font-size: 4vw;
+  margin: 0;
+  padding-top: 20%;
+  padding-bottom: 2%;
+}
+
+.registration-logo {
+  height: 35%;
+  width: 40%;
+  margin: auto;
+  display: block;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+p {
+  font-size: 1.5vw;
+}
+
+.invalid-feedback {
+  font-size: 1.5vw;
 }
 
 .create-btn {
-  margin-top: 4%;
-  margin-left: 5%;
-  color: black;
-  background-color: white;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #1e7eb6;
+  text-align: center;
+  transition: all 0.2s;
+}
+.create-btn:hover {
+  background-color: #034a74;
+}
+
+.signin-btn {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #1e7eb6;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.signin-btn:hover {
+  background-color: #d40303;
+}
+.registration-details {
+  font-size: 3vw;
+}
+
+@media (min-width: 769px) {
+  .app-name-registration {
+    padding-top: 5%;
+    font-size: 3vw;
+  }
+  .registration-logo {
+    height: 20%;
+    width: 25%;
+  }
+  .invalid-feedback {
+    font-size: 1vw;
+  }
+  .registration-details {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1500px) {
+  .app-name-registration {
+    padding-top: 4%;
+    font-size: 2vw;
+  }
+  .registration-logo {
+    height: 10%;
+    width: 15%;
+  }
+  .registration-details {
+    font-size: 1vw;
+  }
 }

@@ -12,7 +12,9 @@ const SavedArticles = () => {
     <>
       <Nav />
       <div className={darkMode ? 'saved-articles-dark' : 'saved-articles'}>
-        <h1>Saved Articles</h1>
+        <h1 className={darkMode ? 'saved-articles-name-dark' : 'saved-articles-name'}>
+          Saved Articles
+        </h1>
         <main className='main'>
           {savedArticles.map((article, index) => (
             <Article article={article} key={index} />
