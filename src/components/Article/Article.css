@@ -44,6 +44,10 @@
 .article.conservative {
   box-shadow: inset 0 20px 40px -8px rgba(255, 0, 0, 0.6);
 }
+.article.neutral {
+  margin-bottom: 15%;
+}
+
 
 .article-content {
   padding: 1rem;
@@ -71,4 +75,7 @@
   .article-item {
     width: 250px;
   }
+  .article.neutral {
+  margin-bottom: 0%;
+}
 }

@@ -59,6 +59,14 @@
   float: right;
 }
 
+.left-arrow, .right-arrow{
+  width: 30px;
+  height: 30px;  
+}
+.left-arrow{
+  margin-right: 20px;
+}
+
 .error-message {
   padding-left: 1%;
 }
