@@ -98,7 +98,7 @@ const LoginForm = (props) => {
               )}
             </Formik>
             <p className='test-account-details'>
-              Test Account <br /> Email: demo@account.com <br /> Password: P@ssword1
+              Test Account <br /> Email: demo@account.com<br /> Password: P@ssword1
             </p>
             <Link to='/registration' style={{ textDecoration: 'none' }}>
               <button className='register-btn'>Register</button>
