@@ -27,13 +27,6 @@
   font-weight: 600;
 }
 
-.saved-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
 .saved-empty {
   text-align: center;
   color: var(--text-muted);
@@ -45,8 +38,77 @@
   font-weight: 600;
 }
 
+.saved-sections {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.saved-lane {
+  display: grid;
+  gap: 0.9rem;
+  padding-top: 0.2rem;
+  border-top: 4px solid var(--neutral);
+}
+
+.saved-lane[data-lane="liberal"] {
+  border-top-color: var(--liberal);
+}
+
+.saved-lane[data-lane="conservative"] {
+  border-top-color: var(--conservative);
+}
+
+.saved-lane-header,
+.saved-topic-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.saved-lane-header h2,
+.saved-topic-header h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.saved-lane-header h2 {
+  font-size: 1.35rem;
+}
+
+.saved-lane-header span,
+.saved-topic-header span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.saved-topic {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.saved-topic-header h3 {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.saved-grid .article-card {
+  width: 100%;
+}
+
 @media (max-width: 560px) {
   .saved-title {
     font-size: 1.9rem;
+  }
+
+  .saved-grid {
+    grid-template-columns: 1fr;
   }
 }
