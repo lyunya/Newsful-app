@@ -38,7 +38,7 @@ export default function ArticleCard({ article }) {
   const { isSaved, toggleSave } = useSavedArticles();
   const [saveError, setSaveError] = useState(false);
   const saved = isSaved(article.url);
-  const source = sourceForUrl(article.url);
+  const source = article.source || sourceForUrl(article.url);
   const published = timeAgo(article.published);
 
   const handleToggle = async () => {

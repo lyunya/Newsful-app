@@ -44,7 +44,8 @@ Optional environment variables (put them in `.env.local`):
 | Variable | Purpose | Default |
 | --- | --- | --- |
 | `VITE_API_ENDPOINT` | Newsful API base URL | `https://newsful-api.onrender.com/api` |
-| `VITE_CURRENTS_API_KEY` | [Currents API](https://currentsapi.services) key for news data | bundled demo key |
+
+News comes from the Newsful API, which aggregates free Google News RSS feeds per outlet — there is no news-API key to sign up for or expire.
 
 ## Technology
 

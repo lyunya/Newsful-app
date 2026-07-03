@@ -26,11 +26,15 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [isSlow, setIsSlow] = useState(false);
 
   useEffect(() => {
     const abortController = new AbortController();
     setIsLoading(true);
     setError(null);
+    setIsSlow(false);
+    // Free hosting spins the API down when idle; warn if the wake-up is slow
+    const slowTimer = setTimeout(() => setIsSlow(true), 6000);
 
     fetchNews(query || undefined, abortController.signal)
       .then((results) => {
@@ -41,9 +45,13 @@ export default function HomePage() {
         if (err.name === 'AbortError') return;
         setError('Couldn’t load the news right now. Please try again.');
         setIsLoading(false);
-      });
+      })
+      .finally(() => clearTimeout(slowTimer));
 
-    return () => abortController.abort();
+    return () => {
+      clearTimeout(slowTimer);
+      abortController.abort();
+    };
   }, [query, refreshKey]);
 
   return (
@@ -78,6 +86,12 @@ export default function HomePage() {
 
         {isLoading ? (
           <div className="rows">
+            {isSlow && (
+              <p className="slow-hint">
+                Waking up the news server — the first load of the day can take
+                up to a minute…
+              </p>
+            )}
             {LANES.map((lane) => (
               <SkeletonRow key={lane.id} />
             ))}
