@@ -3,29 +3,31 @@ import { screen } from '@testing-library/react';
 import HomePage from './HomePage';
 import { renderWithProviders } from '../test/test-utils';
 
-const fakeNewsResponse = (domain) => ({
-  ok: true,
-  json: () =>
-    Promise.resolve({
-      news: [
-        {
-          title: `Top story from ${domain}`,
-          url: `https://${domain}/story`,
-          image: null,
-          published: '2026-07-03 04:12:11 +0000',
-        },
-      ],
-    }),
+const laneArticle = (lane, source) => ({
+  title: `Top story from ${source}`,
+  url: `https://news.google.com/rss/articles/${lane}-story`,
+  image: null,
+  source,
+  published: '2026-07-03T04:12:11.000Z',
+  lane,
 });
+
+const fakeNewsResponse = {
+  liberal: [laneArticle('liberal', 'MSNBC')],
+  conservative: [laneArticle('conservative', 'Fox News')],
+  neutral: [laneArticle('neutral', 'NPR')],
+};
 
 describe('HomePage', () => {
   beforeEach(() => {
     vi.stubGlobal(
       'fetch',
-      vi.fn((url) => {
-        const domain = new URL(url).searchParams.get('domain').split(',')[0];
-        return Promise.resolve(fakeNewsResponse(domain));
-      })
+      vi.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(fakeNewsResponse),
+        })
+      )
     );
   });
 
@@ -45,9 +47,18 @@ describe('HomePage', () => {
     expect(
       screen.getByRole('heading', { name: 'Neutral' })
     ).toBeInTheDocument();
-    expect(screen.getByText('Top story from msnbc.com')).toBeInTheDocument();
-    expect(screen.getByText('Top story from foxnews.com')).toBeInTheDocument();
-    expect(screen.getByText('Top story from bbc.com')).toBeInTheDocument();
+    expect(screen.getByText('Top story from MSNBC')).toBeInTheDocument();
+    expect(screen.getByText('Top story from Fox News')).toBeInTheDocument();
+    expect(screen.getByText('Top story from NPR')).toBeInTheDocument();
+  });
+
+  it('requests news from the Newsful API with the search query', async () => {
+    renderWithProviders(<HomePage />);
+    await screen.findByRole('heading', { name: 'Liberal' });
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringMatching(/\/news$/),
+      expect.anything()
+    );
   });
 
   it('shows an error state with retry when the news API is down', async () => {

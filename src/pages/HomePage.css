@@ -37,6 +37,12 @@
   padding-top: 1rem;
 }
 
+.slow-hint {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 0 1rem;
+}
+
 .page-error {
   text-align: center;
   padding: 2rem 1rem;

@@ -33,8 +33,8 @@ export function SavedArticlesProvider({ children }) {
         const guestSaves = GuestSaves.get();
         if (guestSaves.length > 0) {
           await Promise.allSettled(
-            guestSaves.map(({ title, url, image }) =>
-              NewsfulApi.saveArticle(token, { title, url, image })
+            guestSaves.map(({ title, url, image, source }) =>
+              NewsfulApi.saveArticle(token, { title, url, image, source })
             )
           );
           GuestSaves.clear();
@@ -70,6 +70,7 @@ export function SavedArticlesProvider({ children }) {
         title: article.title,
         url: article.url,
         image: article.image ?? null,
+        source: article.source ?? null,
       };
       if (token) {
         const saved = await NewsfulApi.saveArticle(token, record);

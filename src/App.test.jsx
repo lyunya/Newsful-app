@@ -8,7 +8,11 @@ describe('App', () => {
     vi.stubGlobal(
       'fetch',
       vi.fn(() =>
-        Promise.resolve({ ok: true, json: () => Promise.resolve({ news: [] }) })
+        Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({ liberal: [], conservative: [], neutral: [] }),
+        })
       )
     );
   });

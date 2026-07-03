@@ -14,9 +14,23 @@ describe('ArticleCard', () => {
     expect(headline).toHaveAttribute('target', '_blank');
   });
 
-  it('shows the source domain', () => {
+  it('falls back to the URL domain when no source name is stored', () => {
     renderWithProviders(<ArticleCard article={sampleArticle} />);
     expect(screen.getByText(/npr\.org/)).toBeInTheDocument();
+  });
+
+  it('prefers the stored source name over the URL domain', () => {
+    renderWithProviders(
+      <ArticleCard
+        article={{
+          ...sampleArticle,
+          source: 'NPR',
+          url: 'https://news.google.com/rss/articles/abc',
+        }}
+      />
+    );
+    expect(screen.getByText(/NPR/)).toBeInTheDocument();
+    expect(screen.queryByText(/news\.google\.com/)).not.toBeInTheDocument();
   });
 
   it('bookmarks and un-bookmarks as a guest without any network', async () => {

@@ -56,11 +56,11 @@ const NewsfulApi = {
     return request('/saved-articles', { token });
   },
 
-  saveArticle(token, { title, url, image }) {
+  saveArticle(token, { title, url, image, source }) {
     return request('/saved-articles', {
       method: 'POST',
       token,
-      body: JSON.stringify({ title, url, image }),
+      body: JSON.stringify({ title, url, image, source }),
     });
   },
 
