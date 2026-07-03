@@ -1,56 +1,32 @@
 {
-  "name": "react-playground",
-  "version": "0.1.0",
+  "name": "newsful",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-regular-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "bcryptjs": "^2.4.3",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "eslint-plugin-disable": "^2.0.1",
-    "formik": "^2.1.5",
-    "install": "^0.13.0",
-    "lodash": "^4.17.19",
-    "npm": "^6.14.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hook-form": "^6.0.8",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "react-scroll-to": "^3.0.0-beta.6",
-    "react-test-renderer": "^16.13.1",
-    "yup": "^0.29.1"
+  "type": "module",
+  "engines": {
+    "node": ">=20"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "deploy": "vercel --prod"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0"
   },
   "devDependencies": {
-    "prettier": "^2.1.1"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.5.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.4"
   }
 }

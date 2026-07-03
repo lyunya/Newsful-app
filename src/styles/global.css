@@ -1,0 +1,69 @@
+/* Design tokens — light is the default, dark comes from data-theme on <html> */
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --surface-2: #e3e8ee;
+  --text: #1b2733;
+  --text-muted: #5b6875;
+  --border: #d5dce3;
+
+  --brand: #1f6feb;
+  --liberal: #175ab8;
+  --conservative: #bf0d3e;
+  --neutral: #8a95a1;
+  --neutral-heading: #3d4854;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #141b22;
+  --surface: #1e2831;
+  --surface-2: #2a3742;
+  --text: #e8edf2;
+  --text-muted: #9aa7b3;
+  --border: #33414d;
+
+  --brand: #4c8dff;
+  --liberal: #5c9bff;
+  --conservative: #ff5c7c;
+  --neutral: #6b7885;
+  --neutral-heading: #b6c1cc;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+}
+
+a {
+  color: var(--brand);
+}

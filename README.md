@@ -1,48 +1,56 @@
 # Newsful
 
-### This app was developed to help you see how news sources from all sides of the political spectrum report on what's going on in the world.
+**Whose views are in your news?** Newsful shows you how conservative, liberal, and neutral news outlets report on the same stories, so you can spot the bias in what you read.
 
-## Description
-#### As we increasingly get our news from digital media sources, it is important to be aware of the role that bias plays in what we're reading. I know for myself and many others, we tend to only read news from sources that align with where we are on the political spectrum. I created this app that shows you how stories are reported on across conservative, liberal, and neutral news outlets. This will show how stories are reported on from different viewpoints.
+## How it works
 
-## Functionality
+Open the app and you're looking at the news — no account, no login wall.
 
-This application's functionality includes:
+* See today's top stories side by side across **Liberal**, **Conservative**, and **Neutral** outlets
+* Search any topic and compare how each side covers it
+* Bookmark articles with one tap — bookmarks work without an account (stored on your device)
+* Optionally create an account to sync your bookmarks across devices; any bookmarks you saved as a guest are merged into your account when you log in
+* Light and dark mode, following your system preference by default
 
-* Create new accounts and log in with those credentials
-* See the most popular new stories of the day
-* Search for any news topic and see how Conservative, Liberal, and Neutral news sources are reporting on it.
-* Save/Delete news articles to your account
+Home page
 
+![Home page](docs/readme-home-light.png)
+
+Dark mode
+
+![Home page, dark mode](docs/readme-home-dark.png)
+
+Saved articles
+
+![Saved articles, dark mode](docs/readme-saved-dark.png)
+
+*(Screenshots use placeholder headlines.)*
 
 ## Application Website
+
 https://newsful.vercel.app/
 
- Login Page
-![image of Login Page](https://i.ibb.co/zR7wxbd/Newsful-Signin.png)
+## Development
 
- Registration Page
-![image of Registration Page](https://i.ibb.co/GVLBtDd/Newsful-Registration.png)
+```bash
+npm install
+npm run dev        # start dev server on http://localhost:3000
+npm test           # run the test suite (Vitest + Testing Library)
+npm run build      # production build to dist/
+```
 
-Home Page
-![image of Home Page](https://i.ibb.co/bFh8Zwb/Newsful-Home.png)
+Optional environment variables (put them in `.env.local`):
 
-Saved Articles Page
-![image of Saved Articles Page](https://i.ibb.co/QY6PrNg/Newsful-Saved.png)
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `VITE_API_ENDPOINT` | Newsful API base URL | `https://newsful-api.onrender.com/api` |
+| `VITE_CURRENTS_API_KEY` | [Currents API](https://currentsapi.services) key for news data | bundled demo key |
 
-Home Page Dark Mode
-![image of Home Page Dark Mode](https://i.ibb.co/2vybWjM/Newsful-Home-Dark.png)
+## Technology
 
-Saved Articles Dark Mode
-![image of Home Page Dark Mode](https://i.ibb.co/YPTv1cD/Newsful-Saved-Dark.png)
+* React 19 + Vite
+* React Router 7
+* Vitest + React Testing Library
+* Plain CSS with custom properties (design tokens, dark mode via `data-theme`)
 
-## Security
-Application uses JWT authentication
-
-## Technology Used
-* HTML
-* CSS
-* JavaScript
-* React
-* Jest
-* Enzyme
+The companion API lives at [newsful-api](https://github.com/lyunya/newsful-api) — Node 22, Express 5, and Postgres, with JWT auth for the optional accounts.

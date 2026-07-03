@@ -1,0 +1,46 @@
+.saved-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.saved-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 1rem;
+}
+
+.saved-hint,
+.saved-error {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.saved-error {
+  color: var(--conservative);
+}
+
+.saved-hint a {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.saved-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.saved-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem 1rem;
+}
+
+.saved-empty a {
+  color: var(--brand);
+  font-weight: 600;
+}

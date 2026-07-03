@@ -1,0 +1,104 @@
+.home-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app-name {
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, var(--liberal), var(--conservative));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  margin: 0 auto 0.75rem;
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.page-error {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text);
+}
+
+.retry-button {
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background-color: var(--surface-2);
+}
+
+/* Loading skeletons */
+.skeleton-row {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.skeleton-heading {
+  width: 140px;
+  height: 1.5rem;
+  border-radius: 6px;
+  background-color: var(--surface-2);
+  margin-bottom: 0.75rem;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-cards {
+  display: flex;
+  gap: 0.85rem;
+  overflow: hidden;
+}
+
+.skeleton-card {
+  width: 260px;
+  height: 240px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background-color: var(--surface-2);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-card,
+  .skeleton-heading {
+    animation: none;
+  }
+}
