@@ -1,0 +1,80 @@
+.article-row {
+  padding: 0.5rem 0 1rem;
+}
+
+.row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.row-heading {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.row-heading[data-lane='liberal'] {
+  color: var(--liberal);
+}
+
+.row-heading[data-lane='conservative'] {
+  color: var(--conservative);
+}
+
+.row-heading[data-lane='neutral'] {
+  color: var(--neutral-heading);
+}
+
+.row-arrows {
+  display: none;
+  gap: 0.4rem;
+}
+
+/* Paddle arrows only make sense with a mouse; touch devices swipe */
+@media (hover: hover) and (pointer: fine) {
+  .row-arrows {
+    display: flex;
+  }
+}
+
+.row-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+.row-arrow:hover {
+  background-color: var(--surface-2);
+}
+
+.row-scroller {
+  display: flex;
+  gap: 0.85rem;
+  overflow-x: auto;
+  padding: 0.25rem 1rem 0.75rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.row-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.row-empty {
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+}

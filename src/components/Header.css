@@ -1,0 +1,128 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  /* The political spectrum, as a top border */
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(
+      90deg,
+      var(--liberal),
+      var(--neutral) 50%,
+      var(--conservative)
+    )
+    1;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  background: linear-gradient(90deg, var(--liberal), var(--conservative));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.main-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  background: none;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background-color: var(--surface-2);
+}
+
+.nav-link.active {
+  color: var(--text);
+  background-color: var(--surface-2);
+}
+
+.saved-count {
+  min-width: 1.35em;
+  padding: 0 0.35em;
+  border-radius: 999px;
+  background-color: var(--brand);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.35em;
+  text-align: center;
+}
+
+.header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle {
+  border: none;
+  background: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.user-email {
+  max-width: 16ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+}
+
+.auth-link:hover {
+  color: var(--text);
+  background-color: var(--surface-2);
+}
+
+@media (max-width: 640px) {
+  .user-email {
+    display: none;
+  }
+  .header-inner {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+}
