@@ -1,6 +1,6 @@
 const config = {
   API_ENDPOINT:
-    import.meta.env.VITE_API_ENDPOINT || 'https://newsful-api.onrender.com/api',
+    import.meta.env.VITE_API_ENDPOINT || 'https://newsful-api.vercel.app/api',
   TOKEN_KEY: 'newsful-auth-token',
   USER_KEY: 'newsful-user',
   GUEST_SAVES_KEY: 'newsful-guest-saves',
