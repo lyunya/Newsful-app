@@ -27,7 +27,7 @@
 .brand {
   font-size: 1.35rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   text-decoration: none;
   background: linear-gradient(90deg, var(--liberal), var(--conservative));
   -webkit-background-clip: text;

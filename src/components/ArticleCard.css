@@ -1,15 +1,17 @@
 .article-card {
   display: flex;
   flex-direction: column;
-  width: 260px;
+  width: min(76vw, 268px);
   flex-shrink: 0;
   background-color: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   scroll-snap-align: start;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  border-top: 3px solid var(--neutral);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  border-top: 4px solid var(--neutral);
 }
 
 .article-card:hover {
@@ -17,11 +19,11 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
-.article-card[data-lane='liberal'] {
+.article-card[data-lane="liberal"] {
   border-top-color: var(--liberal);
 }
 
-.article-card[data-lane='conservative'] {
+.article-card[data-lane="conservative"] {
   border-top-color: var(--conservative);
 }
 
@@ -29,6 +31,7 @@
   display: block;
   aspect-ratio: 16 / 9;
   background-color: var(--surface-2);
+  overflow: hidden;
 }
 
 .card-image {
@@ -36,6 +39,137 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.story-visual {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  color: white;
+  background-color: #243447;
+  text-decoration: none;
+}
+
+.story-visual::before,
+.story-visual::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+}
+
+.story-visual::before {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.12) 0 1px,
+      transparent 1px 18px
+    );
+}
+
+.story-visual::after {
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.42));
+}
+
+.story-visual[data-kind="politics"] {
+  background:
+    linear-gradient(145deg, rgba(31, 111, 235, 0.84), rgba(191, 13, 62, 0.86)),
+    #27384a;
+}
+
+.story-visual[data-kind="world"] {
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(74, 157, 118, 0.95),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #1d3557, #457b9d);
+}
+
+.story-visual[data-kind="sports"] {
+  background:
+    radial-gradient(
+      circle at 72% 28%,
+      rgba(255, 255, 255, 0.82),
+      transparent 12%
+    ),
+    linear-gradient(135deg, #355834, #8ea65a);
+}
+
+.story-visual[data-kind="science"] {
+  background:
+    radial-gradient(
+      circle at 78% 24%,
+      rgba(255, 255, 255, 0.8),
+      transparent 8%
+    ),
+    linear-gradient(135deg, #26324a, #2f7a8a);
+}
+
+.story-visual[data-kind="culture"] {
+  background: linear-gradient(135deg, #6d3048, #c65b45), #6d3048;
+}
+
+.visual-source {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.7rem;
+  z-index: 1;
+  max-width: calc(100% - 1.5rem);
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.visual-line,
+.visual-mark {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.74);
+}
+
+.visual-line {
+  left: 0.75rem;
+  height: 4px;
+  border-radius: 99px;
+}
+
+.visual-line-1 {
+  top: 0.9rem;
+  width: 42%;
+}
+
+.visual-line-2 {
+  top: 1.55rem;
+  width: 28%;
+  opacity: 0.75;
+}
+
+.visual-mark {
+  right: 0.85rem;
+  top: 0.85rem;
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.visual-mark::after {
+  position: absolute;
+  content: "";
+  inset: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.66);
 }
 
 .card-body {
@@ -56,6 +190,20 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.lead-card {
+  width: min(88vw, 410px);
+}
+
+.lead-card .card-headline {
+  font-size: 1.16rem;
+  line-height: 1.25;
+  -webkit-line-clamp: 3;
+}
+
+.lead-card .card-body {
+  padding: 0.9rem 1rem 1rem;
 }
 
 .card-headline:hover {

@@ -1,11 +1,11 @@
 .article-row {
-  padding: 0.5rem 0 1rem;
+  padding: 0.75rem 0 1.25rem;
 }
 
 .row-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.65rem;
   padding: 0 1rem;
   margin-bottom: 0.5rem;
 }
@@ -13,18 +13,26 @@
 .row-heading {
   margin: 0;
   font-size: 1.35rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
-.row-heading[data-lane='liberal'] {
+.row-count {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
+.row-heading[data-lane="liberal"] {
   color: var(--liberal);
 }
 
-.row-heading[data-lane='conservative'] {
+.row-heading[data-lane="conservative"] {
   color: var(--conservative);
 }
 
-.row-heading[data-lane='neutral'] {
+.row-heading[data-lane="neutral"] {
   color: var(--neutral-heading);
 }
 
@@ -62,9 +70,9 @@
 
 .row-scroller {
   display: flex;
-  gap: 0.85rem;
+  gap: 1rem;
   overflow-x: auto;
-  padding: 0.25rem 1rem 0.75rem;
+  padding: 0.25rem 1rem 0.85rem;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -77,4 +85,18 @@
 .row-empty {
   color: var(--text-muted);
   margin: 0.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .row-header {
+    align-items: flex-end;
+  }
+
+  .row-heading {
+    font-size: 1.18rem;
+  }
+
+  .row-count {
+    font-size: 0.7rem;
+  }
 }

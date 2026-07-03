@@ -1,12 +1,16 @@
-import { useRef } from 'react';
-import ArticleCard from './ArticleCard';
-import './ArticleRow.css';
+import { useRef } from "react";
+import ArticleCard from "./ArticleCard";
+import "./ArticleRow.css";
 
 export default function ArticleRow({ laneId, heading, articles }) {
   const scrollerRef = useRef(null);
+  const [leadArticle, ...moreArticles] = articles;
 
   const scrollBy = (direction) => {
-    scrollerRef.current?.scrollBy({ left: direction * 560, behavior: 'smooth' });
+    scrollerRef.current?.scrollBy({
+      left: direction * 560,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -15,6 +19,9 @@ export default function ArticleRow({ laneId, heading, articles }) {
         <h2 className="row-heading" data-lane={laneId}>
           {heading}
         </h2>
+        {articles.length > 0 && (
+          <span className="row-count">{articles.length} stories</span>
+        )}
         <div className="row-arrows">
           <button
             type="button"
@@ -36,11 +43,20 @@ export default function ArticleRow({ laneId, heading, articles }) {
       </div>
       <div className="row-scroller" ref={scrollerRef}>
         {articles.length > 0 ? (
-          articles.map((article) => (
-            <ArticleCard article={article} key={article.url} />
-          ))
+          <>
+            <ArticleCard
+              article={leadArticle}
+              key={leadArticle.url}
+              variant="lead"
+            />
+            {moreArticles.map((article) => (
+              <ArticleCard article={article} key={article.url} />
+            ))}
+          </>
         ) : (
-          <p className="row-empty">No results here. Try another search topic!</p>
+          <p className="row-empty">
+            No results here. Try another search topic!
+          </p>
         )}
       </div>
     </section>

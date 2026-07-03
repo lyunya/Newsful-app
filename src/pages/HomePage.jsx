@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import Header from '../components/Header';
-import SearchBar from '../components/SearchBar';
-import ArticleRow from '../components/ArticleRow';
-import { fetchNews, LANES } from '../services/news-api';
-import './HomePage.css';
+import { useEffect, useState } from "react";
+import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
+import ArticleRow from "../components/ArticleRow";
+import { fetchNews, LANES } from "../services/news-api";
+import "./HomePage.css";
 
 const EMPTY_NEWS = { liberal: [], conservative: [], neutral: [] };
 
@@ -21,12 +21,13 @@ function SkeletonRow() {
 }
 
 export default function HomePage() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [news, setNews] = useState(EMPTY_NEWS);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
   const [isSlow, setIsSlow] = useState(false);
+  const topStories = LANES.map((lane) => news[lane.id]?.[0]).filter(Boolean);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -42,8 +43,8 @@ export default function HomePage() {
         setIsLoading(false);
       })
       .catch((err) => {
-        if (err.name === 'AbortError') return;
-        setError('Couldn’t load the news right now. Please try again.');
+        if (err.name === "AbortError") return;
+        setError("Couldn’t load the news right now. Please try again.");
         setIsLoading(false);
       })
       .finally(() => clearTimeout(slowTimer));
@@ -59,16 +60,35 @@ export default function HomePage() {
       <Header />
       <main className="home-page">
         <div className="hero">
-          <h1 className="app-name">Newsful</h1>
-          <p className="tagline">
-            Whose views are in your news? See how every side covers the same
-            story.
-          </p>
-          <SearchBar
-            onSearch={setQuery}
-            activeQuery={query}
-            onClear={() => setQuery('')}
-          />
+          <div className="hero-copy">
+            <h1 className="app-name">Newsful</h1>
+            <p className="tagline">
+              Whose views are in your news? See how every side covers the same
+              story.
+            </p>
+            <SearchBar
+              onSearch={setQuery}
+              activeQuery={query}
+              onClear={() => setQuery("")}
+            />
+          </div>
+          {!isLoading && !error && topStories.length > 0 && (
+            <div className="briefing-panel" aria-label="Top stories">
+              {topStories.map((story) => (
+                <a
+                  className="briefing-link"
+                  href={story.url}
+                  key={story.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-lane={story.lane}
+                >
+                  <span className="briefing-source">{story.source}</span>
+                  <span className="briefing-title">{story.title}</span>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         {error && (
