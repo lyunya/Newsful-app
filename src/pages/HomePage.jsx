@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import ArticleRow from "../components/ArticleRow";
+import StoryCompare from "../components/StoryCompare";
 import { fetchNews, LANES } from "../services/news-api";
 import "./HomePage.css";
 
@@ -31,7 +32,6 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
-  const topStories = LANES.map((lane) => news[lane.id]?.[0]).filter(Boolean);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -69,24 +69,10 @@ export default function HomePage() {
               onClear={() => setQuery("")}
             />
           </div>
-          {!isLoading && !error && topStories.length > 0 && (
-            <div className="briefing-panel" aria-label="Top stories">
-              {topStories.map((story) => (
-                <a
-                  className="briefing-link"
-                  href={story.url}
-                  key={story.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-lane={story.lane}
-                >
-                  <span className="briefing-source">{story.source}</span>
-                  <span className="briefing-title">{story.title}</span>
-                </a>
-              ))}
-            </div>
-          )}
         </div>
+
+        {/* Matched stories are about today's news, not a search. */}
+        {!query && <StoryCompare />}
 
         {error && (
           <div className="page-error" role="alert">

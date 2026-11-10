@@ -6,13 +6,10 @@
 
 .hero {
   padding: 1.5rem 1rem 1rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
-  gap: 1.25rem;
-  align-items: end;
 }
 
 .hero-copy {
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
@@ -34,57 +31,6 @@
   max-width: 46ch;
   color: var(--text-muted);
   font-size: 1.05rem;
-}
-
-.briefing-panel {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.briefing-link {
-  display: grid;
-  gap: 0.22rem;
-  min-height: 74px;
-  padding: 0.7rem 0.8rem;
-  color: var(--text);
-  text-decoration: none;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--neutral);
-  border-radius: 8px;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.briefing-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-}
-
-.briefing-link[data-lane="liberal"] {
-  border-left-color: var(--liberal);
-}
-
-.briefing-link[data-lane="conservative"] {
-  border-left-color: var(--conservative);
-}
-
-.briefing-source {
-  color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.briefing-title {
-  display: -webkit-box;
-  overflow: hidden;
-  font-size: 0.92rem;
-  font-weight: 750;
-  line-height: 1.25;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .rows {
@@ -162,11 +108,6 @@
 }
 
 @media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-  }
-
   .app-name {
     font-size: 2.45rem;
   }
