@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { laneForUrl, sourceForUrl } from "../services/news-api";
+import { topicForTitle } from "../services/topics";
 import { useSavedArticles } from "../context/SavedArticlesContext";
 import "./ArticleCard.css";
 
@@ -7,8 +8,7 @@ const relativeTime = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
 function timeAgo(published) {
   if (!published) return null;
-  // Currents returns e.g. "2026-07-03 04:12:11 +0000"
-  const date = new Date(published.replace(" ", "T").replace(" +0000", "Z"));
+  const date = new Date(published);
   if (Number.isNaN(date.getTime())) return null;
   const minutes = Math.round((date.getTime() - Date.now()) / 60000);
   if (minutes > -60) return relativeTime.format(minutes, "minute");
@@ -34,34 +34,24 @@ function BookmarkIcon({ filled }) {
   );
 }
 
-function visualKind(title = "") {
-  const text = title.toLowerCase();
-  if (
-    /(court|law|judge|vote|election|congress|senate|trump|democrat|republican)/.test(
-      text,
-    )
-  ) {
-    return "politics";
-  }
-  if (
-    /(world|iran|ukraine|china|europe|migrant|border|war|global)/.test(text)
-  ) {
-    return "world";
-  }
-  if (/(sport|game|cup|mlb|nba|wnba|nfl|soccer|grand prix|race)/.test(text)) {
-    return "sports";
-  }
-  if (/(ai|nasa|science|tech|space|synthetic|climate|heatwave)/.test(text)) {
-    return "science";
-  }
-  if (/(swift|movie|music|wedding|comic|culture|celebrity)/.test(text)) {
-    return "culture";
-  }
-  return "briefing";
+// The placeholder art only has a handful of styles; fold topics into them.
+const VISUAL_KINDS = {
+  politics: "politics",
+  law: "politics",
+  world: "world",
+  sports: "sports",
+  science: "science",
+  culture: "culture",
+};
+
+function visualKind(title) {
+  return VISUAL_KINDS[topicForTitle(title).id] ?? "briefing";
 }
 
 function StoryVisual({ article, source }) {
-  if (article.image) {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  if (article.image && !imageFailed) {
     return (
       <a
         className="card-image-link"
@@ -76,9 +66,9 @@ function StoryVisual({ article, source }) {
           src={article.image}
           alt=""
           loading="lazy"
-          onError={(event) => {
-            event.target.closest(".card-image-link").style.display = "none";
-          }}
+          decoding="async"
+          referrerPolicy="no-referrer"
+          onError={() => setImageFailed(true)}
         />
       </a>
     );

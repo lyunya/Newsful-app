@@ -22,3 +22,15 @@ describe('Header', () => {
     expect(document.documentElement.dataset.theme).not.toBe(initialTheme);
   });
 });
+
+describe('theme persistence', () => {
+  it('only saves the theme once the user picks one', async () => {
+    const user = userEvent.setup();
+    renderWithProviders(<Header />);
+    expect(window.localStorage.getItem('newsful-theme')).toBeNull();
+    await user.click(
+      screen.getByRole('button', { name: /switch to (light|dark) mode/i })
+    );
+    expect(window.localStorage.getItem('newsful-theme')).toMatch(/light|dark/);
+  });
+});

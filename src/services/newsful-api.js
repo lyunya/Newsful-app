@@ -33,10 +33,7 @@ const NewsfulApi = {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
-    return {
-      authToken: res.authToken,
-      user: res.user ?? { id: res.userId, email },
-    };
+    return { authToken: res.authToken, user: res.user };
   },
 
   async register({ email, password }) {
@@ -44,12 +41,8 @@ const NewsfulApi = {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
-    // Modern API logs you in on registration; fall back to an explicit
-    // login for older deployments that only return the created user.
-    if (res.authToken) {
-      return { authToken: res.authToken, user: res.user };
-    }
-    return NewsfulApi.login({ email, password });
+    // Registering also logs you in.
+    return { authToken: res.authToken, user: res.user };
   },
 
   getSavedArticles(token) {
