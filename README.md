@@ -6,6 +6,7 @@
 
 Open the app and you're looking at the news — no account, no login wall.
 
+* **Same story, three views** — stories several outlets are covering, with each side's headline side by side and a note when a side isn't covering it
 * See today's top stories side by side across **Liberal**, **Conservative**, and **Neutral** outlets
 * Search any topic and compare how each side covers it
 * Bookmark articles with one tap — bookmarks work without an account (stored on your device)

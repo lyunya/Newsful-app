@@ -49,3 +49,14 @@ export async function fetchNews(query, signal) {
   }
   return response.json();
 }
+
+// Stories that several outlets are covering, grouped across lanes:
+// { stories: [{ id, title, lanes: { liberal, conservative, neutral },
+//   missingLanes, outletCount, latest }], outlets, headlines }
+export async function fetchStories(signal) {
+  const response = await fetch(`${config.API_ENDPOINT}/stories`, { signal });
+  if (!response.ok) {
+    throw new Error(`Stories request failed (${response.status})`);
+  }
+  return response.json();
+}
