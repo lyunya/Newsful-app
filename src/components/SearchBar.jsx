@@ -1,15 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './SearchBar.css';
 
-export default function SearchBar({ onSearch, activeQuery, onClear }) {
-  const [value, setValue] = useState('');
+export default function SearchBar({ onSearch, activeQuery = '', onClear }) {
+  const [value, setValue] = useState(activeQuery);
+
+  // Keep the box in step with the active search (back button, shared link,
+  // "Back to top stories").
+  useEffect(() => {
+    setValue(activeQuery);
+  }, [activeQuery]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const query = value.trim();
     if (!query) return;
     onSearch(query);
-    setValue('');
   };
 
   return (

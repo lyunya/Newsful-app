@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import ArticleRow from "../components/ArticleRow";
@@ -21,21 +22,21 @@ function SkeletonRow() {
 }
 
 export default function HomePage() {
-  const [query, setQuery] = useState("");
+  // The search lives in the URL so results can be shared, bookmarked, and
+  // undone with the back button.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = (searchParams.get("q") ?? "").trim();
+  const setQuery = (next) => setSearchParams(next ? { q: next } : {});
   const [news, setNews] = useState(EMPTY_NEWS);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [isSlow, setIsSlow] = useState(false);
   const topStories = LANES.map((lane) => news[lane.id]?.[0]).filter(Boolean);
 
   useEffect(() => {
     const abortController = new AbortController();
     setIsLoading(true);
     setError(null);
-    setIsSlow(false);
-    // Free hosting spins the API down when idle; warn if the wake-up is slow
-    const slowTimer = setTimeout(() => setIsSlow(true), 6000);
 
     fetchNews(query || undefined, abortController.signal)
       .then((results) => {
@@ -46,13 +47,9 @@ export default function HomePage() {
         if (err.name === "AbortError") return;
         setError("Couldn’t load the news right now. Please try again.");
         setIsLoading(false);
-      })
-      .finally(() => clearTimeout(slowTimer));
+      });
 
-    return () => {
-      clearTimeout(slowTimer);
-      abortController.abort();
-    };
+    return () => abortController.abort();
   }, [query, refreshKey]);
 
   return (
@@ -106,12 +103,6 @@ export default function HomePage() {
 
         {isLoading ? (
           <div className="rows">
-            {isSlow && (
-              <p className="slow-hint">
-                Waking up the news server — the first load of the day can take
-                up to a minute…
-              </p>
-            )}
             {LANES.map((lane) => (
               <SkeletonRow key={lane.id} />
             ))}

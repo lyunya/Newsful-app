@@ -94,11 +94,6 @@
   padding-top: 0.5rem;
 }
 
-.slow-hint {
-  text-align: center;
-  color: var(--text-muted);
-  margin: 0 1rem;
-}
 
 .page-error {
   text-align: center;

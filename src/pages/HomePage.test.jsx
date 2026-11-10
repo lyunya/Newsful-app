@@ -75,3 +75,31 @@ describe("HomePage", () => {
     expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
   });
 });
+
+describe("HomePage search", () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(fakeNewsResponse),
+        }),
+      ),
+    );
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("runs the search from the URL so results can be shared", async () => {
+    renderWithProviders(<HomePage />, { route: "/?q=climate" });
+    await screen.findByRole("heading", { name: "Liberal" });
+    expect(fetch).toHaveBeenCalledWith(
+      expect.stringMatching(/\/news\?q=climate$/),
+      expect.anything(),
+    );
+    expect(screen.getByRole("searchbox")).toHaveValue("climate");
+  });
+});

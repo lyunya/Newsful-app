@@ -12,7 +12,30 @@
       name="description"
       content="See how news is reported from different sides of the political spectrum"
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Newsful" />
+    <meta
+      property="og:description"
+      content="See how news is reported from different sides of the political spectrum"
+    />
+    <meta property="og:url" content="https://newsful.vercel.app/" />
+    <meta name="twitter:card" content="summary" />
     <link rel="manifest" href="/manifest.json" />
+    <script>
+      // Apply the theme before first paint (mirrors ThemeContext).
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('newsful-theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <title>Newsful</title>
   </head>
   <body>

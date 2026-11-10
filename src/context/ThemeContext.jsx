@@ -3,27 +3,43 @@ import { ThemeStorage } from '../services/storage';
 
 const ThemeContext = createContext(null);
 
-function initialTheme() {
+const DARK_QUERY = '(prefers-color-scheme: dark)';
+
+function storedTheme() {
   const stored = ThemeStorage.get();
-  if (stored === 'light' || stored === 'dark') return stored;
-  if (typeof window.matchMedia === 'function') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-  }
-  return 'light';
+  return stored === 'light' || stored === 'dark' ? stored : null;
 }
 
+function systemTheme() {
+  if (typeof window.matchMedia !== 'function') return 'light';
+  return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light';
+}
+
+// The theme follows the system setting until the user picks one with the
+// toggle; only an explicit choice is saved. index.html applies the same
+// rule before first paint so there's no flash of the wrong theme.
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(initialTheme);
+  const [choice, setChoice] = useState(storedTheme);
+  const [system, setSystem] = useState(systemTheme);
+  const theme = choice ?? system;
+
+  useEffect(() => {
+    if (typeof window.matchMedia !== 'function') return undefined;
+    const media = window.matchMedia(DARK_QUERY);
+    const onChange = (event) => setSystem(event.matches ? 'dark' : 'light');
+    media.addEventListener?.('change', onChange);
+    return () => media.removeEventListener?.('change', onChange);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    ThemeStorage.set(theme);
   }, [theme]);
 
-  const toggleTheme = () =>
-    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    ThemeStorage.set(next);
+    setChoice(next);
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -4,6 +4,7 @@ import ArticleCard from "../components/ArticleCard";
 import { useAuth } from "../context/AuthContext";
 import { useSavedArticles } from "../context/SavedArticlesContext";
 import { LANES, laneForUrl } from "../services/news-api";
+import { topicForTitle } from "../services/topics";
 import "./SavedPage.css";
 
 const LANE_LABELS = Object.fromEntries(
@@ -11,6 +12,7 @@ const LANE_LABELS = Object.fromEntries(
 );
 
 const SOURCE_LANES = {
+  "ms now": "liberal",
   msnbc: "liberal",
   huffpost: "liberal",
   cnn: "liberal",
@@ -22,57 +24,6 @@ const SOURCE_LANES = {
   npr: "neutral",
   reuters: "neutral",
 };
-
-const TOPICS = [
-  {
-    id: "politics",
-    label: "Politics",
-    pattern:
-      /trump|biden|white house|congress|senate|democrat|republican|election|vote|campaign|governor|mayor|mamdani|policy|tax|bill/i,
-  },
-  {
-    id: "law",
-    label: "Law & Justice",
-    pattern:
-      /court|judge|justice|lawsuit|trial|charged|indicted|ruling|appeals|police|crime|prison|legal/i,
-  },
-  {
-    id: "world",
-    label: "World",
-    pattern:
-      /iran|ukraine|russia|china|israel|gaza|europe|uk|france|turkey|monaco|colombia|ghana|argentina|cape verde|world/i,
-  },
-  {
-    id: "sports",
-    label: "Sports",
-    pattern:
-      /world cup|mlb|nfl|nba|wnba|soccer|football|grand prix|race|tennis|cricket|caitlin clark|angel reese|hamilton/i,
-  },
-  {
-    id: "health",
-    label: "Health",
-    pattern:
-      /health|nhs|doctor|disease|alzheimer|birth|pregnan|hospital|medical|fitness/i,
-  },
-  {
-    id: "science",
-    label: "Science & Tech",
-    pattern:
-      /ai|a\.i\.|nasa|space|science|synthetic|tech|climate|heatwave|telescope/i,
-  },
-  {
-    id: "culture",
-    label: "Culture",
-    pattern:
-      /swift|movie|music|wedding|comic|celebrity|hollywood|kid rock|karlie kloss|rosie|funniest/i,
-  },
-  {
-    id: "business",
-    label: "Business",
-    pattern:
-      /business|market|stocks|company|economy|tariff|trade|financial|sponsor|tax-exempt/i,
-  },
-];
 
 function laneForArticle(article) {
   if (article.lane && LANE_LABELS[article.lane]) return article.lane;
@@ -87,16 +38,6 @@ function laneForArticle(article) {
   return matched?.[1] ?? urlLane;
 }
 
-function topicForArticle(article) {
-  const text = `${article.title ?? ""} ${article.source ?? ""}`;
-  return (
-    TOPICS.find((topic) => topic.pattern.test(text)) ?? {
-      id: "general",
-      label: "General",
-    }
-  );
-}
-
 function groupedSavedArticles(articles) {
   const lanes = LANES.map((lane) => ({
     ...lane,
@@ -109,7 +50,7 @@ function groupedSavedArticles(articles) {
   articles.forEach((article) => {
     const laneId = laneForArticle(article);
     const lane = byLane[laneId] ?? byLane.neutral;
-    const topic = topicForArticle(article);
+    const topic = topicForTitle(article.title ?? "");
     const topicGroup = lane.topics.get(topic.id) ?? {
       ...topic,
       articles: [],
@@ -131,7 +72,7 @@ function groupedSavedArticles(articles) {
 
 export default function SavedPage() {
   const { user } = useAuth();
-  const { savedArticles, error } = useSavedArticles();
+  const { savedArticles, isLoading, error } = useSavedArticles();
   const groupedArticles = groupedSavedArticles(savedArticles);
 
   return (
@@ -184,6 +125,10 @@ export default function SavedPage() {
                 ))}
               </section>
             ))}
+          </div>
+        ) : isLoading ? (
+          <div className="saved-empty" role="status">
+            <p>Loading your saved articles…</p>
           </div>
         ) : (
           <div className="saved-empty">

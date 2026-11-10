@@ -1,12 +1,12 @@
-// News comes from the Newsful API, which aggregates free Google News RSS
-// feeds per outlet — no metered news-API key to expire.
+// News comes from the Newsful API, which aggregates free RSS feeds per
+// outlet — no metered news-API key to expire.
 import config from '../config';
 
 export const LANES = [
   {
     id: 'liberal',
     label: 'Liberal',
-    matchDomains: ['msnbc.com', 'huffpost.com', 'cnn.com'],
+    matchDomains: ['ms.now', 'msnbc.com', 'huffpost.com', 'cnn.com'],
   },
   {
     id: 'conservative',
@@ -16,7 +16,7 @@ export const LANES = [
   {
     id: 'neutral',
     label: 'Neutral',
-    matchDomains: ['bbc.com', 'npr.org', 'reuters.com'],
+    matchDomains: ['bbc.com', 'bbc.co.uk', 'npr.org', 'reuters.com'],
   },
 ];
 
